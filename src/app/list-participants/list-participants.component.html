@@ -1,10 +1,5 @@
-<p>
-  list-participants works!
-  {{participants}} {{test}}
-</p>
-
 <ul>
-  <li *ngFor="let participant of participants">
+  <li *ngFor="let participant of participants" (click)="clickParticipant(participant)">
     {{participant}}
   </li>
 </ul>

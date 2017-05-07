@@ -10,7 +10,7 @@ import { ParticipantDetailComponent } from './participant-detail/participant-det
 
 const appRoutes : Routes = [
   { path: 'participants',      component: ListParticipantsComponent },  
-  { path: 'participant',      component: ParticipantDetailComponent },
+  { path: 'participant/:id',      component: ParticipantDetailComponent },
   { path: '',   redirectTo: 'participants', pathMatch: 'full' },
 ]
 
