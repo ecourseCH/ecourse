@@ -1,3 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">Ecourse</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li> <a routerLink="participants" routerLinkActive="active">Teilnehmende</a></li>
+        <li> <a routerLink="" routerLinkActive="active">Aktivitäten</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php" class="ng-binding">Abmelden</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <h1>
   {{title}}
 </h1>
@@ -6,8 +31,3 @@
  <a routerLink="/participant" routerLinkActive="active">Participant</a>
 
 <router-outlet></router-outlet>
-
-
-
-
-   `
