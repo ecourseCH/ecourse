@@ -1,5 +1,10 @@
-<div *ngIf="ready">
+<div *ngIf="isDataAvailable"> 
 <p>
   participant-detail {{participant.name}}
 </p>
 </div>
+
+<div *ngIf="!isDataAvailable">
+En Moment bitte... ;-) 
+</div>
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {ParticipantService, Participant} from '../participant-service.service'
 import 'rxjs/add/operator/switchMap';
@@ -12,6 +12,8 @@ import 'rxjs/add/operator/switchMap';
 export class ParticipantDetailComponent implements OnInit {
 
   participant: Participant;
+  isDataAvailable: boolean = false;
+  that:ParticipantDetailComponent = this;
 
   constructor(
       private route: ActivatedRoute,
@@ -22,11 +24,12 @@ export class ParticipantDetailComponent implements OnInit {
       this.route.params
     // (+) converts string 'id' to a number
     .switchMap((params: Params) => this.participantService.getParticipant(+params['id']))
-    .subscribe((partic: Participant) => this.participant = partic);
+    .subscribe((participant: Participant) => this.onParticipantRead(participant));
   }
 
-  test(params: Params) : void {
-
+  onParticipantRead(participant: Participant) {
+    this.participant = participant;
+    this.isDataAvailable = true;
   }
 
 }
