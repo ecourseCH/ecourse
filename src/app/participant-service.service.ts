@@ -5,12 +5,30 @@ export class ParticipantService {
 
   constructor() { }
 
-  participants: String[] =  [
-    "Luxus", "Mammut", "Gallo", "Snoopy", "Prusik"
+  participants: Participant[] = [
+
+    {id: 1, name:"Luxus"},
+    {id: 2, name:"Gallo"},
+    {id: 3, name:"Mammut"},
+    {id: 4, name:"Snoopy"},
+    {id: 5, name:"Prusik"},
+    
   ]
 
-  getParticipants(): String[] {
-    return this.participants;
+
+  participantsPromise = Promise.resolve(this.participants);
+  getParticipants() {
+    return this.participantsPromise;
   }
 
+  getParticipant(id: number) {
+    console.error('getParticipant ' + id);
+    return this.participantsPromise.then(participant => participant.find(p => p.id === +id));
+  }
+
+}
+
+export class Participant {
+  id: number;
+  name: string;
 }

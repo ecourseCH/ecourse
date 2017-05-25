@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {ParticipantService} from './../participant-service.service'
+import {Participant,ParticipantService} from './../participant-service.service'
 
 @Component({
   selector: 'list-participants',
@@ -10,16 +10,17 @@ import {ParticipantService} from './../participant-service.service'
 })
 export class ListParticipantsComponent implements OnInit {
 
-  constructor(private participantService: ParticipantService,
+  constructor(
+    private participantService: ParticipantService,
     private router: Router) { }
   participants = [];
 
   ngOnInit() {
-    this.participants = this.participantService.getParticipants();
+    this.participantService.getParticipants().then(participants => this.participants =participants);
   }
 
-  clickParticipant(participant: String) {
-  this.router.navigate(['/participant', participant]);
+  clickParticipant(participant: Participant) {
+  this.router.navigate(['/participant', participant.id]);
   }
 
 
