@@ -22,7 +22,6 @@ export class ParticipantService {
   }
 
   getParticipant(id: number) {
-    console.error('getParticipant ' + id);
     return this.participantsPromise.then(participant => participant.find(p => p.id === +id));
   }
 

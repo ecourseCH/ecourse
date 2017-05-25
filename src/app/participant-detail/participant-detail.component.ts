@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {ParticipantService, Participant} from './../participant-service.service'
+import {ParticipantService, Participant} from '../participant-service.service'
 import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'participant-detail',
   templateUrl: './participant-detail.component.html',
-  styleUrls: ['./participant-detail.component.css']
+  styleUrls: ['./participant-detail.component.css'],
+  providers: [ParticipantService]
 })
 export class ParticipantDetailComponent implements OnInit {
 
