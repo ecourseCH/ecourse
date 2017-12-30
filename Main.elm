@@ -14,8 +14,7 @@ type alias Model =
 
 
 type Msg
-    = OnClick
-    | Tick Time
+    = Tick Time
     | ParticipantsLoaded (Result Http.Error (List Participant))
   
 
@@ -58,8 +57,6 @@ viewParticipant part =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        OnClick ->
-            (model, sendRequest)
         Tick newTime ->
           (model, sendRequest)
         ParticipantsLoaded (Ok participants) ->
