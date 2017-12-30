@@ -1,11 +1,11 @@
 module Main exposing (..)
- 
+
 import Html exposing (..)
-import Html.Attributes as HA exposing (..)
-import Html.Events as HE exposing (..)
 import Data exposing (..)
 import Http
 import Time exposing (Time, second)
+import Bootstrap.Table as BootstrapTable exposing (..)
+import Bootstrap.CDN as BootstrapCDN
 
 
 type alias Model =
@@ -16,7 +16,7 @@ type alias Model =
 type Msg
     = Tick Time
     | ParticipantsLoaded (Result Http.Error (List Participant))
-  
+
 
 main : Program Never Model Msg
 main =
@@ -36,41 +36,61 @@ init =
 view : Model -> Html Msg
 view model =
     div
-        [][
-         showList model
+        []
+        [ BootstrapCDN.stylesheet
+        , showList model
         ]
 
 
 showList : Model -> Html Msg
 showList model =
-    table [] (List.map viewParticipant model.participants)
+    BootstrapTable.table
+        { options = [ BootstrapTable.striped, BootstrapTable.hover ]
+        , thead = tableHeader
+        , tbody = BootstrapTable.tbody [] (List.map viewParticipant model.participants)
+        }
 
 
-viewParticipant : Participant -> Html Msg
+viewParticipant : Participant -> BootstrapTable.Row Msg
 viewParticipant part =
-    tr [] [
-      td [] 
-      [ text <| part.prename ++ " " ++ part.name ++ " v/o " ++ part.scoutName ]
-    ]
+    BootstrapTable.tr []
+        [ BootstrapTable.td []
+            [ text "Foto" ]
+        , BootstrapTable.td []
+            [ h3 [] [ text part.scoutName ]
+            , p [] [ text <| part.prename ++ " " ++ part.name ]
+            ]
+        ]
+
+
+tableHeader : BootstrapTable.THead Msg
+tableHeader =
+    simpleThead
+        [ BootstrapTable.th [] [ text "Foto" ]
+        , BootstrapTable.th [] [ text "TN" ]
+        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Tick newTime ->
-          (model, sendRequest)
+            ( model, sendRequest )
+
         ParticipantsLoaded (Ok participants) ->
             ( { participants = participants }, Cmd.none )
 
         ParticipantsLoaded (Err err) ->
-            let xx = Debug.log "oh, noes" (toString err)
-            in (model, Cmd.none)
-            
-            
+            let
+                xx =
+                    Debug.log "oh, noes" (toString err)
+            in
+                ( model, Cmd.none )
+
 
 sendRequest : Cmd Msg
 sendRequest =
-  Http.send ParticipantsLoaded Data.getParticipants
+    Http.send ParticipantsLoaded Data.getParticipants
 
 
 subscriptions : Model -> Sub Msg
