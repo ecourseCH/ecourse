@@ -2,41 +2,7 @@ module Data exposing (..)
 
 import Http
 import Json.Decode as Decode
-import Time exposing (Time, second)
-import Navigation exposing (Location)
-
-
-type alias Model =
-    { participants : List Participant
-    , route : Route
-    }
-
-
-type Msg
-    = Tick Time
-    | ParticipantsLoaded (Result Http.Error (List Participant))
-    | OnLocationChange Location
-
-
-type alias Participant =
-    { id : Int
-    , name : String
-    , prename : String
-    , scoutName : String
-    }
-
-
-type Route
-    = ParticipantsListRoute
-    | ParticipantRoute Int
-    | NotFoundRoute
-
-
-initialModel : Route -> Model
-initialModel route =
-    { participants = []
-    , route = route
-    }
+import Model exposing (..)
 
 
 url : String

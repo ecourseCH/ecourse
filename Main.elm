@@ -1,9 +1,10 @@
 module Main exposing (..)
 
 import Html exposing (..)
-import Data exposing (..)
+import Model exposing (..)
 import Update exposing (..)
 import View exposing (..)
+import Msg exposing (..)
 import Navigation exposing (Location)
 import Routing
 
@@ -24,4 +25,4 @@ init location =
         currentRoute =
             Routing.parseLocation location
     in
-        ( Data.initialModel currentRoute, sendRequest )
+        ( Model.initialModel currentRoute, sendRequest )

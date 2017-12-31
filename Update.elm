@@ -1,9 +1,11 @@
 module Update exposing (..)
 
-import Data exposing (..)
+import Model exposing (..)
 import Routing exposing (..)
 import Http
 import Time exposing (Time, second)
+import Data exposing (..)
+import Msg exposing (..)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
