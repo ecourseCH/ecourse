@@ -3,27 +3,40 @@ module Data exposing (..)
 import Http
 import Json.Decode as Decode
 import Time exposing (Time, second)
+import Navigation exposing (Location)
 
 
 type alias Model =
     { participants : List Participant
+    , route : Route
     }
 
 
 type Msg
     = Tick Time
     | ParticipantsLoaded (Result Http.Error (List Participant))
+    | OnLocationChange Location
 
 
 type alias Participant =
-    { name : String
+    { id : Int
+    , name : String
     , prename : String
     , scoutName : String
     }
 
 
+type Route
+    = ParticipantsListRoute
+    | ParticipantRoute Int
+    | NotFoundRoute
 
--- url = "http://prusik.ch/ecourse/participants.json"
+
+initialModel : Route -> Model
+initialModel route =
+    { participants = []
+    , route = route
+    }
 
 
 url : String
@@ -38,7 +51,8 @@ getParticipants =
 
 decodeParticipant : Decode.Decoder Participant
 decodeParticipant =
-    Decode.map3 Participant
+    Decode.map4 Participant
+        (Decode.field "id" Decode.int)
         (Decode.field "name" Decode.string)
         (Decode.field "preName" Decode.string)
         (Decode.field "scoutName" Decode.string)

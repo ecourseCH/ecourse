@@ -1,6 +1,7 @@
 module Update exposing (..)
 
 import Data exposing (..)
+import Routing exposing (..)
 import Http
 import Time exposing (Time, second)
 
@@ -12,7 +13,7 @@ update msg model =
             ( model, sendRequest )
 
         ParticipantsLoaded (Ok participants) ->
-            ( { participants = participants }, Cmd.none )
+            ( { model | participants = participants }, Cmd.none )
 
         ParticipantsLoaded (Err err) ->
             let
@@ -20,6 +21,13 @@ update msg model =
                     Debug.log "oh, noes" (toString err)
             in
                 ( model, Cmd.none )
+
+        OnLocationChange location ->
+            let
+                newRoute =
+                    parseLocation location
+            in
+                ( { model | route = newRoute }, Cmd.none )
 
 
 sendRequest : Cmd Msg
