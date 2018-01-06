@@ -16,9 +16,18 @@ participantDetailUrl id =
     url ++ "/" ++ toString id
 
 
-getParticipants : Http.Request (List Participant)
+getParticipants : Http.Request (List ParticipantSummary)
 getParticipants =
-    Http.get url (list decodeParticipant)
+    Http.get url (list decodeParticipantSummary)
+
+
+decodeParticipantSummary : Decoder ParticipantSummary
+decodeParticipantSummary =
+    decode ParticipantSummary
+        |> required "id" int
+        |> required "name" string
+        |> required "preName" string
+        |> required "scoutName" string
 
 
 decodeParticipant : Decoder Participant
@@ -28,6 +37,14 @@ decodeParticipant =
         |> required "name" string
         |> required "preName" string
         |> required "scoutName" string
+        |> required "notices" (list decodeNotice)
+
+
+decodeNotice : Decoder Notice
+decodeNotice =
+    decode Notice
+        |> required "id" int
+        |> required "text" string
 
 
 getParticipantDetail : Int -> Http.Request Participant

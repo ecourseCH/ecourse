@@ -2,9 +2,17 @@ module Model exposing (..)
 
 
 type alias Model =
-    { participants : List Participant
+    { participants : List ParticipantSummary
     , participant : Maybe Participant
     , route : Route
+    }
+
+
+type alias ParticipantSummary =
+    { id : Int
+    , name : String
+    , prename : String
+    , scoutName : String
     }
 
 
@@ -13,6 +21,13 @@ type alias Participant =
     , name : String
     , prename : String
     , scoutName : String
+    , notices : List Notice
+    }
+
+
+type alias Notice =
+    { id : Int
+    , text : String
     }
 
 
