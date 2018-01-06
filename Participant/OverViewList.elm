@@ -2,13 +2,14 @@ module Participant.OverViewList exposing (..)
 
 import Html exposing (..)
 import Html.Attributes as HA
-import Data exposing (..)
+import Model exposing (..)
+import Msg exposing (..)
 import Bootstrap.Table as BootstrapTable exposing (..)
 import Bootstrap.CDN as BootstrapCDN
 import Routing
 
 
-view : List Participant -> Html Msg
+view : List ParticipantSummary -> Html Msg
 view model =
     div
         []
@@ -17,7 +18,7 @@ view model =
         ]
 
 
-showList : List Participant -> Html Msg
+showList : List ParticipantSummary -> Html Msg
 showList model =
     BootstrapTable.table
         { options = [ BootstrapTable.striped, BootstrapTable.hover ]
@@ -26,7 +27,7 @@ showList model =
         }
 
 
-viewParticipant : Participant -> BootstrapTable.Row Msg
+viewParticipant : ParticipantSummary -> BootstrapTable.Row Msg
 viewParticipant part =
     let
         path =
