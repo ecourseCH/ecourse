@@ -3,6 +3,7 @@ module Model exposing (..)
 
 type alias Model =
     { participants : List Participant
+    , participant : Maybe Participant
     , route : Route
     }
 
@@ -24,5 +25,6 @@ type Route
 initialModel : Route -> Model
 initialModel route =
     { participants = []
+    , participant = Nothing
     , route = route
     }

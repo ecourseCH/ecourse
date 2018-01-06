@@ -9,4 +9,5 @@ import Navigation exposing (Location)
 type Msg
     = Tick Time
     | ParticipantsLoaded (Result Http.Error (List Participant))
+    | ParticipantDetailLoaded (Result Http.Error Participant)
     | OnLocationChange Location

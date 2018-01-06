@@ -10,6 +10,11 @@ url =
     "http://localhost:5000/api/participant"
 
 
+participantDetailUrl : Int -> String
+participantDetailUrl id =
+    url ++ "/" ++ toString id
+
+
 getParticipants : Http.Request (List Participant)
 getParticipants =
     Http.get url (Decode.list decodeParticipant)
@@ -22,3 +27,8 @@ decodeParticipant =
         (Decode.field "name" Decode.string)
         (Decode.field "preName" Decode.string)
         (Decode.field "scoutName" Decode.string)
+
+
+getParticipantDetail : Int -> Http.Request Participant
+getParticipantDetail id =
+    Http.get (participantDetailUrl id) decodeParticipant
