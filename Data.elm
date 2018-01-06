@@ -1,7 +1,8 @@
 module Data exposing (..)
 
 import Http
-import Json.Decode as Decode
+import Json.Decode exposing (int, string, float, Decoder, list)
+import Json.Decode.Pipeline exposing (decode, required, optional, hardcoded)
 import Model exposing (..)
 
 
@@ -17,16 +18,16 @@ participantDetailUrl id =
 
 getParticipants : Http.Request (List Participant)
 getParticipants =
-    Http.get url (Decode.list decodeParticipant)
+    Http.get url (list decodeParticipant)
 
 
-decodeParticipant : Decode.Decoder Participant
+decodeParticipant : Decoder Participant
 decodeParticipant =
-    Decode.map4 Participant
-        (Decode.field "id" Decode.int)
-        (Decode.field "name" Decode.string)
-        (Decode.field "preName" Decode.string)
-        (Decode.field "scoutName" Decode.string)
+    decode Participant
+        |> required "id" int
+        |> required "name" string
+        |> required "preName" string
+        |> required "scoutName" string
 
 
 getParticipantDetail : Int -> Http.Request Participant
