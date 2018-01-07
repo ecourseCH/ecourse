@@ -24,4 +24,12 @@ init location =
         currentRoute =
             Routing.parseLocation location
     in
-        ( Model.initialModel currentRoute, sendRequest )
+        case currentRoute of
+            Model.ParticipantsListRoute ->
+                ( Model.initialModel currentRoute, sendRequest )
+
+            Model.ParticipantRoute id ->
+                ( Model.initialModel currentRoute, sendParticipantDetailRequest id )
+
+            Model.NotFoundRoute ->
+                ( Model.initialModel currentRoute, Cmd.none )
