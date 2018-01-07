@@ -5,7 +5,6 @@ import Html.Attributes as HA
 import Model exposing (..)
 import Msg exposing (..)
 import Bootstrap.Table as BootstrapTable exposing (..)
-import Bootstrap.CDN as BootstrapCDN
 import Routing
 
 
@@ -13,8 +12,7 @@ view : List ParticipantSummary -> Html Msg
 view model =
     div
         []
-        [ BootstrapCDN.stylesheet
-        , showList model
+        [ showList model
         ]
 
 

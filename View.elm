@@ -1,17 +1,22 @@
 module View exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (class)
 import Model exposing (Model, Route)
 import Msg exposing (..)
 import Participant.OverViewList
 import Participant.Detail
+import Bootstrap.CDN as BootstrapCDN
 
 
 view : Model -> Html Msg
 view model =
     div
         []
-        [ page model
+        [ BootstrapCDN.stylesheet
+        , div [ Html.Attributes.class "container" ]
+            [ page model
+            ]
         ]
 
 
@@ -30,6 +35,4 @@ page model =
 
 notFoundView : Html msg
 notFoundView =
-    div []
-        [ text "Page not found"
-        ]
+    text "Page not found"
