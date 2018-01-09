@@ -45,9 +45,8 @@ showParticipantInfo model =
 showAddNoteField : Notice -> Html Msg
 showAddNoteField newNote =
     BootstrapForm.form []
-        [ Html.textarea [ onInput OnNoteChanged ] [ text newNote.text ]
-        , div [] [ text ("Model Value: " ++ newNote.text) ]
-        , BootstrapButton.button [ BootstrapButton.primary, BootstrapButton.onClick NoteFormSubmitted ] [ text "Beobachtung hinzufügen" ]
+        [ Html.textarea [ onInput OnNoteChanged, Html.Attributes.value newNote.text ] []
+        , div [] [ BootstrapButton.button [ BootstrapButton.primary, BootstrapButton.onClick NoteFormSubmitted ] [ text "Beobachtung hinzufügen" ] ]
         ]
 
 
