@@ -1,11 +1,11 @@
 module Participant.Detail exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class)
-import Html.Events exposing (..)
+import Html.Attributes exposing (..)
 import Msg exposing (..)
 import Bootstrap.Form as BootstrapForm exposing (..)
 import Bootstrap.Button as BootstrapButton exposing (..)
+import Bootstrap.Form.Textarea as BootstrapTextarea
 import Model exposing (Model, Participant, Notice)
 
 
@@ -45,7 +45,15 @@ showParticipantInfo model =
 showAddNoteField : Notice -> Html Msg
 showAddNoteField newNote =
     BootstrapForm.form []
-        [ Html.textarea [ onInput OnNoteChanged, Html.Attributes.value newNote.text ] []
+        [ BootstrapForm.group []
+            [ BootstrapForm.label [ for "notice" ] [ text "Beobachtung" ]
+            , BootstrapTextarea.textarea
+                [ BootstrapTextarea.id "notice"
+                , BootstrapTextarea.value newNote.text
+                , BootstrapTextarea.onInput OnNoteChanged
+                , BootstrapTextarea.rows 5
+                ]
+            ]
         , div [] [ BootstrapButton.button [ BootstrapButton.primary, BootstrapButton.onClick NoteFormSubmitted ] [ text "Beobachtung hinzufügen" ] ]
         ]
 
