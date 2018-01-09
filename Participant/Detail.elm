@@ -2,26 +2,29 @@ module Participant.Detail exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class)
+import Html.Events exposing (..)
+import Msg exposing (..)
+import Bootstrap.Form as BootstrapForm exposing (..)
 import Bootstrap.Button as BootstrapButton exposing (..)
-import Model exposing (Participant, Notice)
+import Model exposing (Model, Participant, Notice)
 
 
-view : Maybe Participant -> Int -> Html msg
+view : Model -> Int -> Html Msg
 view model id =
-    case model of
+    case model.participant of
         Nothing ->
             noParticipant
 
         Just participant ->
-            showParticipantDetail participant
+            showParticipantDetail model participant
 
 
-showParticipantDetail : Participant -> Html msg
-showParticipantDetail model =
+showParticipantDetail : Model -> Participant -> Html Msg
+showParticipantDetail model participant =
     div []
-        [ showParticipantInfo model
-        , showActionButtons
-        , showNoticeList model.notices
+        [ showParticipantInfo participant
+        , showAddNoteField model.newNotice
+        , showNoticeList participant.notices
         ]
 
 
@@ -39,10 +42,12 @@ showParticipantInfo model =
         ]
 
 
-showActionButtons : Html msg
-showActionButtons =
-    div []
-        [ BootstrapButton.button [ BootstrapButton.primary ] [ text "Beobachtung hinzufügen" ]
+showAddNoteField : Notice -> Html Msg
+showAddNoteField newNote =
+    BootstrapForm.form []
+        [ Html.textarea [ onInput OnNoteChanged ] [ text newNote.text ]
+        , div [] [ text ("Model Value: " ++ newNote.text) ]
+        , BootstrapButton.button [ BootstrapButton.primary, BootstrapButton.onClick NoteFormSubmitted ] [ text "Beobachtung hinzufügen" ]
         ]
 
 

@@ -11,3 +11,6 @@ type Msg
     | ParticipantsLoaded (Result Http.Error (List ParticipantSummary))
     | ParticipantDetailLoaded (Result Http.Error Participant)
     | OnLocationChange Location
+    | OnNoteChanged String
+    | NoteFormSubmitted
+    | NotePosted (Result Http.Error Notice)

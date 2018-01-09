@@ -27,7 +27,7 @@ page model =
             Participant.OverViewList.view model.participants
 
         Model.ParticipantRoute id ->
-            Participant.Detail.view model.participant id
+            Participant.Detail.view model id
 
         Model.NotFoundRoute ->
             notFoundView

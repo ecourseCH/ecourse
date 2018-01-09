@@ -38,6 +38,29 @@ update msg model =
             in
                 ( { model | participant = Nothing }, Cmd.none )
 
+        OnNoteChanged inp ->
+            let
+                notice =
+                    model.newNotice
+
+                newNotice =
+                    { notice | text = inp }
+            in
+                ( { model | newNotice = newNotice }, Cmd.none )
+
+        NoteFormSubmitted ->
+            ( model, (sendAddNoteToParticipantRequest model) )
+
+        NotePosted (Ok participants) ->
+            ( { model | newNotice = Model.emptyNotice }, sendParticipantDetailRequest (getParticipantId model.participant) )
+
+        NotePosted (Err err) ->
+            let
+                xx =
+                    Debug.log "oh, noes" (toString err)
+            in
+                ( model, Cmd.none )
+
 
 navigateTo : Model -> Navigation.Location -> ( Model, Cmd Msg )
 navigateTo model location =
@@ -64,6 +87,21 @@ sendRequest =
 sendParticipantDetailRequest : Int -> Cmd Msg
 sendParticipantDetailRequest id =
     Http.send ParticipantDetailLoaded (Data.getParticipantDetail id)
+
+
+sendAddNoteToParticipantRequest : Model -> Cmd Msg
+sendAddNoteToParticipantRequest model =
+    Http.send NotePosted (Data.postNote (getParticipantId model.participant) model.newNotice)
+
+
+getParticipantId : Maybe Participant -> Int
+getParticipantId mayBeParticipant =
+    case mayBeParticipant of
+        Nothing ->
+            0
+
+        Just participant ->
+            participant.id
 
 
 subscriptions : Model -> Sub Msg
