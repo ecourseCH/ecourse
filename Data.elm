@@ -9,12 +9,12 @@ import Model exposing (..)
 
 url : String
 url =
-    "http://localhost:5000/api/participant"
+    "http://localhost/ecourseSlim/participant"
 
 
 noteUrl : Int -> String
 noteUrl id =
-    "http://localhost:5000/api/notice/" ++ (toString id)
+    "http://localhost/ecourseSlim/notice/" ++ (toString id)
 
 
 participantDetailUrl : Int -> String
@@ -35,7 +35,7 @@ postNote id note =
 decodeParticipantSummary : Decoder ParticipantSummary
 decodeParticipantSummary =
     decode ParticipantSummary
-        |> required "id" int
+        |> required "participantId" int
         |> required "name" string
         |> required "preName" string
         |> required "scoutName" string
@@ -44,7 +44,7 @@ decodeParticipantSummary =
 decodeParticipant : Decoder Participant
 decodeParticipant =
     decode Participant
-        |> required "id" int
+        |> required "participantId" int
         |> required "name" string
         |> required "preName" string
         |> required "scoutName" string
@@ -54,8 +54,8 @@ decodeParticipant =
 decodeNotice : Decoder Notice
 decodeNotice =
     decode Notice
-        |> required "id" int
-        |> required "text" string
+        |> required "noticeId" int
+        |> required "noticeText" string
 
 
 encodeNotice : Notice -> Http.Body
