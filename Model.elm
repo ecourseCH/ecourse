@@ -14,6 +14,7 @@ type alias ParticipantSummary =
     , name : String
     , prename : String
     , scoutName : String
+    , branch : Maybe String
     }
 
 
@@ -23,6 +24,7 @@ type alias Participant =
     , prename : String
     , scoutName : String
     , notices : List Notice
+    , branch : Maybe String
     }
 
 

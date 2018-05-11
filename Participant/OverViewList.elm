@@ -6,6 +6,7 @@ import Model exposing (..)
 import Msg exposing (..)
 import Bootstrap.Table as BootstrapTable exposing (..)
 import Routing
+import Helper exposing (..)
 
 
 view : List ParticipantSummary -> Html Msg
@@ -36,9 +37,10 @@ viewParticipant part =
                 [ a [ HA.href path ] [ text "Foto" ] ]
             , BootstrapTable.td []
                 [ h3 [] [ text part.scoutName ]
-                , p [] [ text <| part.prename ++ " " ++ part.name ]
+                , p [] [ text <| part.prename ++ " " ++ part.name ++ " " ++ (handleMaybeString part.branch) ]
                 ]
             ]
+
 
 
 tableHeader : BootstrapTable.THead Msg

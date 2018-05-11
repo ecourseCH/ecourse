@@ -7,6 +7,7 @@ import Bootstrap.Form as BootstrapForm exposing (..)
 import Bootstrap.Button as BootstrapButton exposing (..)
 import Bootstrap.Form.Textarea as BootstrapTextarea
 import Model exposing (Model, Participant, Notice)
+import Helper exposing (..)
 
 
 view : Model -> Int -> Html Msg
@@ -38,6 +39,12 @@ showParticipantInfo model =
             , dd
                 []
                 [ text (model.prename ++ " " ++ model.name ++ " v/o " ++ model.scoutName) ]
+                ,
+                dt []
+                [ text "branch" ]
+            , dd
+                []
+                [ text (handleMaybeString model.branch ) ]
             ]
         ]
 
