@@ -6,12 +6,12 @@ import Json.Decode exposing (int, string, float, Decoder, list, maybe)
 import Json.Decode.Pipeline exposing (decode, required, optional, hardcoded)
 import Model exposing (..)
 
-
+-- TODO
 url : String
 url =
     "http://localhost/ecourseSlim/participant"
 
-
+-- TODO
 noteUrl : Int -> String
 noteUrl id =
     "http://localhost/ecourseSlim/notice/" ++ (toString id)

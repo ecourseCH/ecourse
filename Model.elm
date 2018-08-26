@@ -2,13 +2,22 @@ module Model exposing (..)
 
 
 type alias Model =
-    { participants : List ParticipantSummary
+    { login : Login
+    , participants : List ParticipantSummary
     , participant : Maybe Participant
     , route : Route
     , newNotice : Notice
     }
 
 
+type alias Login =
+  { userName : String
+  , passwordIn : String
+  }
+  
+  
+    
+    
 type alias ParticipantSummary =
     { id : Int
     , name : String
@@ -35,7 +44,8 @@ type alias Notice =
 
 
 type Route
-    = ParticipantsListRoute
+    = LoginRoute
+    | ParticipantsListRoute
     | ParticipantRoute Int
     | NotFoundRoute
 
@@ -46,10 +56,16 @@ emptyNotice =
     , text = ""
     }
 
+emptyLogin : Login
+emptyLogin =
+    { userName = ""
+    , passwordIn = ""
+    }
 
 initialModel : Route -> Model
 initialModel route =
-    { participants = []
+    { login = emptyLogin
+    , participants = []
     , participant = Nothing
     , route = route
     , newNotice = emptyNotice

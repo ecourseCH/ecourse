@@ -25,6 +25,9 @@ init location =
             Routing.parseLocation location
     in
         case currentRoute of
+            Model.LoginRoute ->
+                ( Model.initialModel currentRoute, sendRequest )
+        
             Model.ParticipantsListRoute ->
                 ( Model.initialModel currentRoute, sendRequest )
 

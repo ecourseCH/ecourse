@@ -6,7 +6,8 @@
     "source-directories": [
         ".",
         "Model",
-        "Participant"
+        "Participant",
+        "Login"
     ],
     "exposed-modules": [],
     "dependencies": {

@@ -12,5 +12,7 @@ type Msg
     | ParticipantDetailLoaded (Result Http.Error Participant)
     | OnLocationChange Location
     | OnNoteChanged String
+    | OnUserNameProvided
+    | LoginRequested
     | NoteFormSubmitted
     | NotePosted (Result Http.Error Notice)

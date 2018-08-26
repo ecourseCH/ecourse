@@ -47,7 +47,13 @@ update msg model =
                     { notice | text = inp }
             in
                 ( { model | newNotice = newNotice }, Cmd.none )
-
+       
+        LoginRequested ->
+        ( model, Cmd.none )
+        
+        OnUserNameProvided ->
+        ( model, Cmd.none )
+        
         NoteFormSubmitted ->
             ( model, (sendAddNoteToParticipantRequest model) )
 
@@ -69,6 +75,9 @@ navigateTo model location =
             parseLocation location
     in
         case newRoute of
+            Model.LoginRoute ->
+                ( { model | route = newRoute }, Cmd.none )
+                
             Model.ParticipantsListRoute ->
                 ( { model | route = newRoute }, Cmd.none )
 

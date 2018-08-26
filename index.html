@@ -5735,11 +5735,17 @@ var _elm_lang$core$Platform$ProcessId = {ctor: 'ProcessId'};
 var _elm_lang$core$Platform$Router = {ctor: 'Router'};
 var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode = _elm_lang$core$Json_Decode$succeed;
 var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$resolve = _elm_lang$core$Json_Decode$andThen(_elm_lang$core$Basics$identity);
-var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom = _elm_lang$core$Json_Decode$map2(
-	F2(
-		function (x, y) {
-			return y(x);
-		}));
+var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom = F2(
+	function (decoder, wrapped) {
+		return A3(
+			_elm_lang$core$Json_Decode$map2,
+			F2(
+				function (x, y) {
+					return x(y);
+				}),
+			wrapped,
+			decoder);
+	});
 var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$hardcoded = function (_p0) {
 	return _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$custom(
 		_elm_lang$core$Json_Decode$succeed(_p0));
@@ -5771,7 +5777,15 @@ var _NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$optionalDecoder = F3(
 					return _elm_lang$core$Json_Decode$fail(_p2._0);
 				}
 			} else {
-				return _elm_lang$core$Json_Decode$succeed(fallback);
+				var _p3 = A2(
+					_elm_lang$core$Json_Decode$decodeValue,
+					_elm_lang$core$Json_Decode$keyValuePairs(_elm_lang$core$Json_Decode$value),
+					input);
+				if (_p3.ctor === 'Ok') {
+					return _elm_lang$core$Json_Decode$succeed(fallback);
+				} else {
+					return _elm_lang$core$Json_Decode$fail(_p3._0);
+				}
 			}
 		};
 		return A2(_elm_lang$core$Json_Decode$andThen, handleResult, _elm_lang$core$Json_Decode$value);
@@ -12615,26 +12629,32 @@ var _rundis$elm_bootstrap$Bootstrap_Table$tbody = F2(
 		return _rundis$elm_bootstrap$Bootstrap_Table$TBody(
 			{attributes: attributes, rows: rows});
 	});
+var _user$project$Model$emptyLogin = {userName: '', passwordIn: ''};
 var _user$project$Model$emptyNotice = {id: 0, text: ''};
 var _user$project$Model$initialModel = function (route) {
 	return {
+		login: _user$project$Model$emptyLogin,
 		participants: {ctor: '[]'},
 		participant: _elm_lang$core$Maybe$Nothing,
 		route: route,
 		newNotice: _user$project$Model$emptyNotice
 	};
 };
-var _user$project$Model$Model = F4(
-	function (a, b, c, d) {
-		return {participants: a, participant: b, route: c, newNotice: d};
-	});
-var _user$project$Model$ParticipantSummary = F4(
-	function (a, b, c, d) {
-		return {id: a, name: b, prename: c, scoutName: d};
-	});
-var _user$project$Model$Participant = F5(
+var _user$project$Model$Model = F5(
 	function (a, b, c, d, e) {
-		return {id: a, name: b, prename: c, scoutName: d, notices: e};
+		return {login: a, participants: b, participant: c, route: d, newNotice: e};
+	});
+var _user$project$Model$Login = F2(
+	function (a, b) {
+		return {userName: a, passwordIn: b};
+	});
+var _user$project$Model$ParticipantSummary = F5(
+	function (a, b, c, d, e) {
+		return {id: a, name: b, prename: c, scoutName: d, branch: e};
+	});
+var _user$project$Model$Participant = F6(
+	function (a, b, c, d, e, f) {
+		return {id: a, name: b, prename: c, scoutName: d, notices: e, branch: f};
 	});
 var _user$project$Model$Notice = F2(
 	function (a, b) {
@@ -12645,6 +12665,7 @@ var _user$project$Model$ParticipantRoute = function (a) {
 	return {ctor: 'ParticipantRoute', _0: a};
 };
 var _user$project$Model$ParticipantsListRoute = {ctor: 'ParticipantsListRoute'};
+var _user$project$Model$LoginRoute = {ctor: 'LoginRoute'};
 var _user$project$Data$encodeNotice = function (notice) {
 	return _elm_lang$http$Http$jsonBody(
 		_elm_lang$core$Json_Encode$object(
@@ -12660,17 +12681,42 @@ var _user$project$Data$encodeNotice = function (notice) {
 };
 var _user$project$Data$decodeNotice = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'text',
+	'noticeText',
 	_elm_lang$core$Json_Decode$string,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'id',
+		'noticeId',
 		_elm_lang$core$Json_Decode$int,
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Model$Notice)));
 var _user$project$Data$decodeParticipant = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'notices',
-	_elm_lang$core$Json_Decode$list(_user$project$Data$decodeNotice),
+	'branch',
+	_elm_lang$core$Json_Decode$maybe(_elm_lang$core$Json_Decode$string),
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'notices',
+		_elm_lang$core$Json_Decode$list(_user$project$Data$decodeNotice),
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'scoutName',
+			_elm_lang$core$Json_Decode$string,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'preName',
+				_elm_lang$core$Json_Decode$string,
+				A3(
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+					'name',
+					_elm_lang$core$Json_Decode$string,
+					A3(
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+						'participantId',
+						_elm_lang$core$Json_Decode$int,
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Model$Participant)))))));
+var _user$project$Data$decodeParticipantSummary = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'branch',
+	_elm_lang$core$Json_Decode$maybe(_elm_lang$core$Json_Decode$string),
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 		'scoutName',
@@ -12685,30 +12731,13 @@ var _user$project$Data$decodeParticipant = A3(
 				_elm_lang$core$Json_Decode$string,
 				A3(
 					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-					'id',
+					'participantId',
 					_elm_lang$core$Json_Decode$int,
-					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Model$Participant))))));
-var _user$project$Data$decodeParticipantSummary = A3(
-	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'scoutName',
-	_elm_lang$core$Json_Decode$string,
-	A3(
-		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-		'preName',
-		_elm_lang$core$Json_Decode$string,
-		A3(
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-			'name',
-			_elm_lang$core$Json_Decode$string,
-			A3(
-				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-				'id',
-				_elm_lang$core$Json_Decode$int,
-				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Model$ParticipantSummary)))));
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Model$ParticipantSummary))))));
 var _user$project$Data$noteUrl = function (id) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
-		'http://localhost:5000/api/notice/',
+		'http://localhost/ecourseSlim/notice/',
 		_elm_lang$core$Basics$toString(id));
 };
 var _user$project$Data$postNote = F2(
@@ -12719,7 +12748,7 @@ var _user$project$Data$postNote = F2(
 			_user$project$Data$encodeNotice(note),
 			_user$project$Data$decodeNotice);
 	});
-var _user$project$Data$url = 'http://localhost:5000/api/participant';
+var _user$project$Data$url = 'http://localhost/ecourseSlim/participant';
 var _user$project$Data$participantDetailUrl = function (id) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
@@ -12739,48 +12768,20 @@ var _user$project$Data$getParticipants = A2(
 	_elm_lang$http$Http$get,
 	_user$project$Data$url,
 	_elm_lang$core$Json_Decode$list(_user$project$Data$decodeParticipantSummary));
-var _user$project$Routing$participantDetailPath = function (id) {
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		'#participant/',
-		_elm_lang$core$Basics$toString(id));
-};
-var _user$project$Routing$participantOverViewListPath = '#participant';
-var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
-	{
-		ctor: '::',
-		_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Model$ParticipantsListRoute, _evancz$url_parser$UrlParser$top),
-		_1: {
-			ctor: '::',
-			_0: A2(
-				_evancz$url_parser$UrlParser$map,
-				_user$project$Model$ParticipantRoute,
-				A2(
-					_evancz$url_parser$UrlParser_ops['</>'],
-					_evancz$url_parser$UrlParser$s('participant'),
-					_evancz$url_parser$UrlParser$int)),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_evancz$url_parser$UrlParser$map,
-					_user$project$Model$ParticipantsListRoute,
-					_evancz$url_parser$UrlParser$s('participant')),
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Routing$parseLocation = function (location) {
-	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Routing$matchers, location);
-	if (_p0.ctor === 'Just') {
-		return _p0._0;
+var _user$project$Helper$handleMaybeString = function (maybestring) {
+	var _p0 = maybestring;
+	if (_p0.ctor === 'Nothing') {
+		return '';
 	} else {
-		return _user$project$Model$NotFoundRoute;
+		return _p0._0;
 	}
 };
 var _user$project$Msg$NotePosted = function (a) {
 	return {ctor: 'NotePosted', _0: a};
 };
 var _user$project$Msg$NoteFormSubmitted = {ctor: 'NoteFormSubmitted'};
+var _user$project$Msg$LoginRequested = {ctor: 'LoginRequested'};
+var _user$project$Msg$OnUserNameProvided = {ctor: 'OnUserNameProvided'};
 var _user$project$Msg$OnNoteChanged = function (a) {
 	return {ctor: 'OnNoteChanged', _0: a};
 };
@@ -12795,6 +12796,133 @@ var _user$project$Msg$ParticipantsLoaded = function (a) {
 };
 var _user$project$Msg$Tick = function (a) {
 	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Login_Detail$showUserNameField = function (login) {
+	return A2(
+		_rundis$elm_bootstrap$Bootstrap_Form$form,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_rundis$elm_bootstrap$Bootstrap_Form$group,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_rundis$elm_bootstrap$Bootstrap_Form$label,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$for('username'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('User Name:'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _rundis$elm_bootstrap$Bootstrap_Form_Textarea$textarea(
+							{
+								ctor: '::',
+								_0: _rundis$elm_bootstrap$Bootstrap_Form_Textarea$id('username'),
+								_1: {
+									ctor: '::',
+									_0: _rundis$elm_bootstrap$Bootstrap_Form_Textarea$value(login.userName),
+									_1: {
+										ctor: '::',
+										_0: _rundis$elm_bootstrap$Bootstrap_Form_Textarea$rows(1),
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_rundis$elm_bootstrap$Bootstrap_Button$button,
+							{
+								ctor: '::',
+								_0: _rundis$elm_bootstrap$Bootstrap_Button$primary,
+								_1: {
+									ctor: '::',
+									_0: _rundis$elm_bootstrap$Bootstrap_Button$onClick(_user$project$Msg$LoginRequested),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Login'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Login_Detail$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text('eCourse login page'),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Login_Detail$showUserNameField(model.login),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Routing$participantDetailPath = function (id) {
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		'#participant/',
+		_elm_lang$core$Basics$toString(id));
+};
+var _user$project$Routing$participantOverViewListPath = '#participant';
+var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Model$LoginRoute, _evancz$url_parser$UrlParser$top),
+		_1: {
+			ctor: '::',
+			_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Model$ParticipantsListRoute, _evancz$url_parser$UrlParser$top),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_evancz$url_parser$UrlParser$map,
+					_user$project$Model$ParticipantRoute,
+					A2(
+						_evancz$url_parser$UrlParser_ops['</>'],
+						_evancz$url_parser$UrlParser$s('participant'),
+						_evancz$url_parser$UrlParser$int)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_evancz$url_parser$UrlParser$map,
+						_user$project$Model$ParticipantsListRoute,
+						_evancz$url_parser$UrlParser$s('participant')),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Routing$parseLocation = function (location) {
+	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Routing$matchers, location);
+	if (_p0.ctor === 'Just') {
+		return _p0._0;
+	} else {
+		return _user$project$Model$NotFoundRoute;
+	}
 };
 var _user$project$Update$subscriptions = function (model) {
 	return A2(_elm_lang$core$Time$every, 30000, _user$project$Msg$Tick);
@@ -12828,6 +12956,14 @@ var _user$project$Update$navigateTo = F2(
 		var newRoute = _user$project$Routing$parseLocation(location);
 		var _p1 = newRoute;
 		switch (_p1.ctor) {
+			case 'LoginRoute':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{route: newRoute}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 			case 'ParticipantsListRoute':
 				return {
 					ctor: '_Tuple2',
@@ -12914,6 +13050,10 @@ var _user$project$Update$update = F2(
 						{newNotice: newNotice}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
+			case 'LoginRequested':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'OnUserNameProvided':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			case 'NoteFormSubmitted':
 				return {
 					ctor: '_Tuple2',
@@ -13015,7 +13155,16 @@ var _user$project$Participant_OverViewList$viewParticipant = function (part) {
 										A2(
 											_elm_lang$core$Basics_ops['++'],
 											part.prename,
-											A2(_elm_lang$core$Basics_ops['++'], ' ', part.name))),
+											A2(
+												_elm_lang$core$Basics_ops['++'],
+												' ',
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													part.name,
+													A2(
+														_elm_lang$core$Basics_ops['++'],
+														' ',
+														_user$project$Helper$handleMaybeString(part.branch)))))),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -13213,7 +13362,30 @@ var _user$project$Participant_Detail$showParticipantInfo = function (model) {
 													A2(_elm_lang$core$Basics_ops['++'], ' v/o ', model.scoutName))))),
 									_1: {ctor: '[]'}
 								}),
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$dt,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('branch'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$dd,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(
+												_user$project$Helper$handleMaybeString(model.branch)),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
 						}
 					}),
 				_1: {ctor: '[]'}
@@ -13252,6 +13424,8 @@ var _user$project$View$notFoundView = _elm_lang$html$Html$text('Page not found')
 var _user$project$View$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
+		case 'LoginRoute':
+			return _user$project$Login_Detail$view(model);
 		case 'ParticipantsListRoute':
 			return _user$project$Participant_OverViewList$view(model.participants);
 		case 'ParticipantRoute':
@@ -13289,6 +13463,12 @@ var _user$project$Main$init = function (location) {
 	var currentRoute = _user$project$Routing$parseLocation(location);
 	var _p0 = currentRoute;
 	switch (_p0.ctor) {
+		case 'LoginRoute':
+			return {
+				ctor: '_Tuple2',
+				_0: _user$project$Model$initialModel(currentRoute),
+				_1: _user$project$Update$sendRequest
+			};
 		case 'ParticipantsListRoute':
 			return {
 				ctor: '_Tuple2',
