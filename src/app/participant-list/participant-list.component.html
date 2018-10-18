@@ -1,0 +1,14 @@
+<p>
+  participant-list works!
+</p>
+List of participants
+<!--<ul> <li *ngFor="let participant of participants" > {{participant.participantName  participant.participantSurname v/o participant.participantScoutname}}</li> 
+-->
+<ul> <li *ngFor="let participant of participants">
+ <a routerLink="/participant/{{participant.participantId}}">
+      <span class="badge"></span> {{participant.participantName}} {{participant.participantSurname}} 
+v/o {{participant.participantScoutname}}
+    </a>
+</li> 
+
+</ul>

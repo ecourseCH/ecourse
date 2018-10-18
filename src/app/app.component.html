@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--<div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -17,4 +17,17 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
+-->
+<nav>
+<ul>
+  <li><a routerLink="/dashboard">Dashboard</a></li>
+  <li>  <a routerLink="/participant">Participant-List</a></li>
+  <li>  <a routerLink="/activity">Activity-List</a></li>
+</ul>
+   
+  
 
+  
+</nav>
+<router-outlet></router-outlet>
+<!--<app-participant-detail [participant]="selectedParticipant"></app-participant-detail>-->

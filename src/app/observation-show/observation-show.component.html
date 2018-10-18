@@ -1,0 +1,10 @@
+<p>
+  observation-show works!
+</p>
+<ul> <li *ngFor="let observation of observations">
+ <a routerLink="/observation/{{observation.observationId}}">
+      <span class="badge"></span> {{observation.observationText}}
+    </a>
+</li> 
+
+</ul>

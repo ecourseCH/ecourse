@@ -1,0 +1,12 @@
+<p>
+  activity-list works!
+</p>
+<p>
+
+<ul> <li *ngFor="let activity of activities">
+<a routerLink="/activity/{{activity.activityId}}">
+      <span class="badge"></span>  {{activity.activityNumber}} {{activity.activityName}} {{activity.activityDate}}
+      </a>
+</li> 
+
+</ul>
