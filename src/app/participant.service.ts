@@ -7,7 +7,7 @@ import { Participant } from './model/participant';
 
 
 import { Observable, of } from 'rxjs';
-
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -25,6 +25,12 @@ export class ParticipantService {
   const url =this.participantsUrl.concat("/").concat(id.toString());
   return this.http.get<Participant>(url); 
   }
-
-  
+  addParticipant(participant: Participant): Observable<any> {
+  return this.http.post(this.participantsUrl, participant);};
+ /* updateHero (hero: Hero): Observable<any> {
+  return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+    tap(_ => this.log(`updated hero id=${hero.id}`)),
+    catchError(this.handleError<any>('updateHero'))
+  );
+}*/
 }

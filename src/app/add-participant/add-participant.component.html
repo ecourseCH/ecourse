@@ -1,0 +1,25 @@
+<p>
+  add-participant works!
+</p>
+<app-participant-list></app-participant-list>
+
+Add participant
+<p>
+<!--  -->
+{{addParticipant.participantScoutname}}{{addParticipant.participantName}}{{addParticipant.participantSurname}}
+</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="addParticipant.participantName" placeholder="name">
+  </label>
+</div>
+<div>
+  <label>Scoutname:
+    <input [(ngModel)]="addParticipant.participantScoutname" placeholder="Scoutname">
+  </label>
+</div>
+<div>
+  <label>Surname:
+    <input [(ngModel)]="addParticipant.participantSurname" placeholder="Surname">
+  </label>
+</div>

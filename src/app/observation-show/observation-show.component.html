@@ -1,9 +1,11 @@
-<p>
+<h3>
   observation-show works!
-</p>
+  </h3>
 <ul> <li *ngFor="let observation of observations">
  <a routerLink="/observation/{{observation.observationId}}">
-      <span class="badge"></span> {{observation.observationText}}
+ <div class="module observation">
+      <span class="badge"></span><h4> {{observation.observationText}}</h4>
+      </div>
     </a>
 </li> 
 

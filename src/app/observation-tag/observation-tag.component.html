@@ -1,3 +1,14 @@
 <p>
   observation-tag works!
 </p>
+
+  
+  <ul> <li *ngFor="let observationTag of observationTags">
+ 
+      <span class="badge"></span>   {{observationTag.observationTagId}}
+  {{observationTag.partentObservationTagId}}
+  {{observationTag.observationTagName}}
+
+</li> 
+</ul>
+

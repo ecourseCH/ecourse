@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { Participant } from './model/participant'
 import { Activity } from './model/activity'
@@ -17,6 +18,7 @@ import { ObservationTagComponent } from './observation-tag/observation-tag.compo
 import { LeaderComponent } from './leader/leader.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ObservationShowComponent } from './observation-show/observation-show.component';
+import { AddParticipantComponent } from './add-participant/add-participant.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,14 @@ import { ObservationShowComponent } from './observation-show/observation-show.co
     ObservationTagComponent,
     LeaderComponent,
     ActivityComponent,
-    ObservationShowComponent
+    ObservationShowComponent,
+    AddParticipantComponent
   ],
   imports: [
     BrowserModule, 
-    HttpClientModule, AppRoutingModule
+    HttpClientModule, 
+    AppRoutingModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
