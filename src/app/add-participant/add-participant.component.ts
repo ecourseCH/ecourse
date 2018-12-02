@@ -17,7 +17,14 @@ export class AddParticipantComponent implements OnInit {
 
   ngOnInit() {
   }
-  ngOnClick(){
+  
+  
+  add(){
+
+ /* this.participantService.addParticipant(this.addParticipant);*/
+  
+   this.participantService.addParticipant(this.addParticipant)
+  .subscribe(participants => this.addParticipant = participants);
   }
 }
 

@@ -27,6 +27,8 @@ export class ParticipantService {
   }
   addParticipant(participant: Participant): Observable<any> {
   return this.http.post(this.participantsUrl, participant);};
+  
+  
  /* updateHero (hero: Hero): Observable<any> {
   return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${hero.id}`)),
