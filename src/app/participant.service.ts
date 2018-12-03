@@ -26,6 +26,7 @@ export class ParticipantService {
   return this.http.get<Participant>(url); 
   }
   addParticipant(participant: Participant): Observable<any> {
+  
   return this.http.post(this.participantsUrl, participant);};
   
   

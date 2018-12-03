@@ -19,6 +19,8 @@ import { LeaderComponent } from './leader/leader.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ObservationShowComponent } from './observation-show/observation-show.component';
 import { AddParticipantComponent } from './add-participant/add-participant.component';
+import { ModifyParticipantComponent } from './modify-participant/modify-participant.component';
+import { CourseSetupComponent } from './course-setup/course-setup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AddParticipantComponent } from './add-participant/add-participant.compo
     LeaderComponent,
     ActivityComponent,
     ObservationShowComponent,
-    AddParticipantComponent
+    AddParticipantComponent,
+    ModifyParticipantComponent,
+    CourseSetupComponent
   ],
   imports: [
     BrowserModule, 

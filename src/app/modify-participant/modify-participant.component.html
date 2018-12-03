@@ -1,0 +1,45 @@
+<p>
+  modify-participant works!
+</p>
+
+<div class="form-group">
+ <label for="modifyParticipant">
+  Participant
+ </label>
+ <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="modifyParticipant" class="form-control">
+ <option *ngFor="let participant of participants" [value]="participant.participantId">
+ Name: {{participant.participantName}}
+Scoutname: {{participant.participantScoutname}} 
+Surname: {{participant.participantSurname}}
+ </option>
+ <option value="1"> test value </option>
+ </select>
+
+
+<p>
+Name: {{modifyParticipant.participantName}}
+<p>
+Scoutname: {{modifyParticipant.participantScoutname}} 
+<p>
+Surname: {{modifyParticipant.participantSurname}}
+
+
+</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="modifyParticipant.participantName" placeholder="name">
+  </label>
+</div>
+<div>
+  <label>Scoutname:
+    <input [(ngModel)]="modifyParticipant.participantScoutname" placeholder="Scoutname">
+  </label>
+</div>
+<div>
+  <label>Surname:
+    <input [(ngModel)]="modifyParticipant.participantSurname" placeholder="Surname">
+  </label>
+</div>
+
+<button (click)="modify()">Update participant!</button>
+<button (click)="delete()">Delete participant!</button>
