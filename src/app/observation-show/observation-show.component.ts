@@ -15,6 +15,8 @@ export class ObservationShowComponent implements OnInit {
 
  observations: Observation[];
  
+ restrictedObservation: Observation = new Observation;
+ 
  showObservations: Observation[];
  
   constructor(private observationService: ObservationService) { }
@@ -28,11 +30,11 @@ export class ObservationShowComponent implements OnInit {
   this.observationService.getObservations()
   .subscribe(observations => this.observations = observations);
   }
-  /*
-  setActivityObservations(activityId: number): void {
-  showObservations = observations.filter(matchesActivity);
-
-  showObservations.push(observation);
-  } */
   
+    getSomeObservations(): void {
+  this.observationService.getSomeObservations(this.restrictedObservation)
+  .subscribe(showObservations => this.showObservations = showObservations);
+  }
+  
+ 
 }

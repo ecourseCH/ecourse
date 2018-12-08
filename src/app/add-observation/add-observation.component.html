@@ -1,0 +1,45 @@
+<p>
+  add-observation works!
+</p>
+
+
+New observation
+<p>
+Text: {{addObservation.observationText}}
+<p>
+ActivityId: {{addObservation.activityId}} 
+<p>
+ObservationId: {{addObservation.observationDate}}
+<p>
+LeaderId: {{addObservation.leaderId}} 
+<p>
+participantId: {{addObservation.participantId}}
+
+</p>
+<div>
+  <label>Text:
+    <input [(ngModel)]="addObservation.observationText" placeholder="Text">
+  </label>
+</div>
+<div>
+  <label>ActivityId:
+    <input [(ngModel)]="addObservation.activityId" placeholder="ActivityId">
+  </label>
+</div>
+<div>
+  <label>Observation Date:
+    <input [(ngModel)]="addObservation.observationDate" placeholder="ObservationDate">
+  </label>
+</div>
+<div>
+  <label>LeaderId:
+    <input [(ngModel)]="addObservation.leaderId" placeholder="LeaderId">
+  </label>
+</div>
+<div>
+  <label>Participant Id:
+    <input [(ngModel)]="addObservation.participantId" placeholder="participantId">
+  </label>
+</div>
+
+<button (click)="add()">Add observation!</button>

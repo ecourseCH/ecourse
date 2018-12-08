@@ -1,0 +1,37 @@
+<p>
+  add-leader works!
+</p>
+New leader
+<p>
+Name: {{addLeader.leaderName}}
+<p>
+Name: {{addLeader.userId}}
+<p>
+Scoutname: {{addLeader.leaderScoutname}} 
+<p>
+Surname: {{addLeader.leaderSurname}}
+
+
+</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="addLeader.leaderName" placeholder="name">
+  </label>
+</div>
+<div>
+  <label>User Id:
+    <input [(ngModel)]="addLeader.userid" placeholder="User Id">
+  </label>
+</div>
+<div>
+  <label>Scoutname:
+    <input [(ngModel)]="addLeader.leaderScoutname" placeholder="Scoutname">
+  </label>
+</div>
+<div>
+  <label>Surname:
+    <input [(ngModel)]="addLeader.leaderSurname" placeholder="Surname">
+  </label>
+</div>
+
+<button (click)="add()">Add leader!</button>

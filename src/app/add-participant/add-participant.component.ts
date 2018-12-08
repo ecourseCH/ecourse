@@ -13,6 +13,8 @@ export class AddParticipantComponent implements OnInit {
   
   addParticipant: Participant = new Participant;
   
+    addedParticipant: Participant = new Participant;
+    
   constructor(private participantService: ParticipantService) { }
 
   ngOnInit() {
@@ -21,10 +23,13 @@ export class AddParticipantComponent implements OnInit {
   
   add(){
 
- /* this.participantService.addParticipant(this.addParticipant);*/
+
   
    this.participantService.addParticipant(this.addParticipant)
-  .subscribe(participants => this.addParticipant = participants);
+  .subscribe(participant => this.addedParticipant = participant);
+  
+    this.addParticipant = new Participant;
+  
   }
 }
 

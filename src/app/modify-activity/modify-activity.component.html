@@ -1,0 +1,45 @@
+<p>
+  modify-activity works!
+</p>
+
+
+<div class="form-group">
+ <label for="modifyActivity">
+  Activity
+ </label>
+ <select id="modifyActivity" name="modifyActivity" [(ngModel)]="modifyActivity" class="form-control" (ngModelChange)="onChange($event)">
+ <option *ngFor="let activity of activitys" [value]="activity.activityId">
+ Name: {{activity.activityName}}
+Number: {{activity.activityNumber}} 
+Date: {{activity.activityDate}}
+ </option>
+ </select>
+
+
+<p>
+Name: {{modifyActivity.activityName}}
+<p>
+Number: {{modifyActivity.activityNumber}} 
+<p>
+Date: {{modifyActivity.activityDate}}
+
+
+</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="modifyActivity.activityName" placeholder="name">
+  </label>
+</div>
+<div>
+  <label>Number:
+    <input [(ngModel)]="modifyActivity.activityNumber" placeholder="Number">
+  </label>
+</div>
+<div>
+  <label>Date:
+    <input [(ngModel)]="modifyActivity.activityDate" placeholder="Date">
+  </label>
+</div>
+
+<button (click)="modify()">Update activity!</button>
+<button (click)="delete()">Delete activity!</button>

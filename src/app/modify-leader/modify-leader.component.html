@@ -1,0 +1,45 @@
+<p>
+  modify-leader works!
+</p>
+
+
+<div class="form-group">
+ <label for="modifyLeader">
+  Leader
+ </label>
+ <select id="modifyLeader" name="modifyLeader" [(ngModel)]="modifyLeader" class="form-control" (ngModelChange)="onChange($event)">
+ <option *ngFor="let leader of leaders" [value]="leader.leaderId">
+ Name: {{leader.leaderName}}
+Scoutname: {{leader.leaderScoutname}} 
+Surname: {{leader.leaderSurname}}
+ </option>
+ </select>
+
+
+<p>
+Name: {{modifyLeader.leaderName}}
+<p>
+Scoutname: {{modifyLeader.leaderScoutname}} 
+<p>
+Surname: {{modifyLeader.leaderSurname}}
+
+
+</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="modifyLeader.leaderName" placeholder="name">
+  </label>
+</div>
+<div>
+  <label>Scoutname:
+    <input [(ngModel)]="modifyLeader.leaderScoutname" placeholder="Scoutname">
+  </label>
+</div>
+<div>
+  <label>Surname:
+    <input [(ngModel)]="modifyLeader.leaderSurname" placeholder="Surname">
+  </label>
+</div>
+
+<button (click)="modify()">Update leader!</button>
+<button (click)="delete()">Delete leader!</button>

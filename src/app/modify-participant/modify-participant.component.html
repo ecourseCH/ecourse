@@ -6,13 +6,12 @@
  <label for="modifyParticipant">
   Participant
  </label>
- <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="modifyParticipant" class="form-control">
+ <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="modifyParticipant" class="form-control" (ngModelChange)="onChange($event)">
  <option *ngFor="let participant of participants" [value]="participant.participantId">
  Name: {{participant.participantName}}
 Scoutname: {{participant.participantScoutname}} 
 Surname: {{participant.participantSurname}}
  </option>
- <option value="1"> test value </option>
  </select>
 
 

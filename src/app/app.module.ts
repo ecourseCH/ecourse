@@ -21,6 +21,12 @@ import { ObservationShowComponent } from './observation-show/observation-show.co
 import { AddParticipantComponent } from './add-participant/add-participant.component';
 import { ModifyParticipantComponent } from './modify-participant/modify-participant.component';
 import { CourseSetupComponent } from './course-setup/course-setup.component';
+import { AddActivityComponent } from './add-activity/add-activity.component';
+import { ModifyActivityComponent } from './modify-activity/modify-activity.component';
+import { ModifyLeaderComponent } from './modify-leader/modify-leader.component';
+import { AddLeaderComponent } from './add-leader/add-leader.component';
+import { AddObservationComponent } from './add-observation/add-observation.component';
+import { ModifyObservationComponent } from './modify-observation/modify-observation.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,13 @@ import { CourseSetupComponent } from './course-setup/course-setup.component';
     ObservationShowComponent,
     AddParticipantComponent,
     ModifyParticipantComponent,
-    CourseSetupComponent
+    CourseSetupComponent,
+    AddActivityComponent,
+    ModifyActivityComponent,
+    ModifyLeaderComponent,
+    AddLeaderComponent,
+    AddObservationComponent,
+    ModifyObservationComponent
   ],
   imports: [
     BrowserModule, 
