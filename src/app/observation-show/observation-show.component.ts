@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 
 import { Observation } from '../model/observation'
@@ -19,11 +19,13 @@ export class ObservationShowComponent implements OnInit {
  
  showObservations: Observation[];
  
+ @Input() activityId: number;
+ 
   constructor(private observationService: ObservationService) { }
 
   ngOnInit() {
-  this.getObservations();
-  this.showObservations = this.observations;
+  this.getSomeObservations();
+  /*this.showObservations = this.observations;*/
   }
   
   getObservations(): void {
@@ -32,6 +34,7 @@ export class ObservationShowComponent implements OnInit {
   }
   
     getSomeObservations(): void {
+    this.restrictedObservation.activityId = this.activityId;
   this.observationService.getSomeObservations(this.restrictedObservation)
   .subscribe(showObservations => this.showObservations = showObservations);
   }

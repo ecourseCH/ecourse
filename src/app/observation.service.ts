@@ -25,7 +25,8 @@ export class ObservationService {
   
   
   getSomeObservations(observation: Observation): Observable<Observation[]> {
-  return this.http.post<Observation[]>(this.observationsUrl,observation); 
+    const url =this.observationsUrl.concat("filter");
+  return this.http.post<Observation[]>(url,observation); 
   }
   
   

@@ -9,6 +9,7 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ObservationTagComponent } from './observation-tag/observation-tag.component';
 import { AddObservationComponent } from './add-observation/add-observation.component';
+import { ModifyObservationComponent } from './modify-observation/modify-observation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'courseSetup', component: CourseSetupComponent },
   { path: 'observationTag', component: ObservationTagComponent },
   { path: 'observation', component: AddObservationComponent },
+    { path: 'observation/:id', component: ModifyObservationComponent },
   { path: 'activity', component: ActivityListComponent },
     { path: 'activity/:id', component: ActivityComponent }
 ];

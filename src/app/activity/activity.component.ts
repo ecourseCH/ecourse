@@ -13,7 +13,7 @@ import { ActivityService } from '../activity.service';
 })
 export class ActivityComponent implements OnInit {
 
-@Input() activity: Activity;
+@Input() activity: Activity = new Activity;
 
 constructor( private route: ActivatedRoute,
 private activityService: ActivityService,
