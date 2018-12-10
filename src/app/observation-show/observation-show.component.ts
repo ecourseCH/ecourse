@@ -19,13 +19,28 @@ export class ObservationShowComponent implements OnInit {
  
  showObservations: Observation[];
  
- @Input() activityId: number;
+private _activityId: number;
+ private _participantId: number; 
+ 
+ 
+ @Input() set activityId(id: number) {
+ this._activityId = id;
+ this.getSomeObservations();
+ }
+ ;
+
+
+ @Input() set participantId(id: number) {
+ this._participantId = id;
+ this.getSomeObservations();
+ }
+ ;
  
   constructor(private observationService: ObservationService) { }
 
   ngOnInit() {
-  this.getSomeObservations();
-  /*this.showObservations = this.observations;*/
+ /* this.getSomeObservations();
+  this.showObservations = this.observations;*/
   }
   
   getObservations(): void {
@@ -34,7 +49,9 @@ export class ObservationShowComponent implements OnInit {
   }
   
     getSomeObservations(): void {
-    this.restrictedObservation.activityId = this.activityId;
+    this.restrictedObservation.activityId = this._activityId;
+    this.restrictedObservation.participantId = this._participantId;
+   console.log(this); 
   this.observationService.getSomeObservations(this.restrictedObservation)
   .subscribe(showObservations => this.showObservations = showObservations);
   }

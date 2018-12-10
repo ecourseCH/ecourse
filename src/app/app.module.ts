@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { TreeModule } from 'angular-tree-component';
 
 import { Participant } from './model/participant'
 import { Activity } from './model/activity'
@@ -54,7 +55,8 @@ import { ModifyObservationComponent } from './modify-observation/modify-observat
     BrowserModule, 
     HttpClientModule, 
     AppRoutingModule, 
-    FormsModule
+    FormsModule,
+    TreeModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

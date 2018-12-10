@@ -2,17 +2,19 @@
   activity works!
 </p>
 <div>
+{{activity.activityId}} 
+
 {{activity.activityNumber}} {{activity.activityName}} {{activity.activityDate}}
 </div>
 
 All observations:
-<app-observation-show ></app-observation-show>
+<!--<app-observation-show ></app-observation-show>
 
 Observation for activity 1
-<app-observation-show (activityId)="1"></app-observation-show>
+<app-observation-show [activityId]="1"></app-observation-show>-->
+correct:
+<app-observation-show [activityId]="activity.activityId"></app-observation-show>
 <!--
-<app-observation-show [(activityId)]="{{activity.activityId}}"></app-observation-show>
-
 <app-observation-show [(activityId)]="{{activity.activityId}}"></app-observation-show>
 
 <app-observation-show [(activityId)]="{{activity.activityId}}"></app-observation-show>
