@@ -1,0 +1,13 @@
+Hi there,
+
+this is a short install guide.
+
+Clone git hub directory into your target location.
+
+install angular (local or global)
+
+npm install @angular/cli@latest.
+
+install tree component
+
+npm install --save angular-tree-component
