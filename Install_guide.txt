@@ -11,3 +11,9 @@ npm install @angular/cli@latest.
 install tree component
 
 npm install --save angular-tree-component
+
+
+install bootstrap
+
+npm install bootstrap font-awesome jquery popper.js
+

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { ObservationTag } from '../model/observationTag'
+import { ObservationTag, ObservationTagTree } from '../model/observationTag'
 
 import { ObservationTagService } from '../observation-tag.service';
 
@@ -13,16 +13,51 @@ import { ObservationTagService } from '../observation-tag.service';
   styleUrls: ['./observation-tag.component.css']
 })
 export class ObservationTagComponent implements OnInit {
+
 observationTags: ObservationTag[];
  
- showObservationTags: ObservationTag[];
- 
+ observationTagTree: ObservationTagTree[];
+
+ observationTreeOptions = 
+ {
+  displayField: 'observationTagName',
+    //isExpandedField: 'expanded',
+    idField: 'observationTagId',
+    hasChildrenField: 'children',
+  /*  actionMapping: {
+      mouse: {
+        dblClick: (tree, node, $event) => {
+          if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+        }
+      },
+      keys: {
+        [KEYS.ENTER]: (tree, node, $event) => {
+          node.expandAll();
+        }
+      }
+    },*/
+    nodeHeight: 23,
+    allowDrag: (node) => {
+      return true;
+    },
+    allowDrop: (node) => {
+      return true;
+    },
+    allowDragoverStyling: true,
+    levelPadding: 10,
+   // useVirtualScroll: true,
+    animateExpand: true,
+   // scrollOnActivate: true,
+    animateSpeed: 30,
+    animateAcceleration: 1.2,
+    //scrollContainer: document.documentElement // HTML
+  }
+
   constructor(private observationTagService: ObservationTagService) {
   
   }
   ngOnInit() {
-  this.getObservationTags();
-  this.showObservationTags = this.observationTags;
+  this.getObservationTagTree();
   }
   
   getObservationTags(): void {
@@ -30,35 +65,15 @@ observationTags: ObservationTag[];
   .subscribe(observationTags => this.observationTags = observationTags);
   }
 
+  getObservationTagTree(): void {
+  this.observationTagService.getObservationTagTree()
+  .subscribe(observationTagTree => this.observationTagTree = observationTagTree);
+  }
   
-  /* testing of trees */
-  
-  tree = [
-    {
-      id: 1,
-      name: 'root1',
-      children: [
-        { id: 2, name: 'child1' },
-        { id: 3, name: 'child2' }
-      ]
-    },
-    {
-      id: 4,
-      name: 'root2',
-      children: [
-        { id: 5, name: 'child2.1' },
-        {
-          id: 6,
-          name: 'child2.2',
-          children: [
-            { id: 7, name: 'subsub' }
-          ]
-        }
-      ]
-    }
-  ];
-  options = {};
-  
+  saveTree(){
+  this.observationTagService.saveObservationTagTree(this.observationTagTree).subscribe(observationTagTree => this.observationTagTree = observationTagTree);
+  }
+
   
   
   

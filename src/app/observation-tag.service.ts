@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { ObservationTag } from './model/observationTag';
+import { ObservationTag,ObservationTagTree } from './model/observationTag';
 
 
 import { Observable, of } from 'rxjs';
@@ -21,10 +21,17 @@ export class ObservationTagService {
   getObservationTags(): Observable<ObservationTag[]> {
   return this.http.get<ObservationTag[]>(this.observationTagsUrl); 
   }
+  getObservationTagTree(): Observable<ObservationTagTree[]> {
+   const url =this.observationTagsUrl.concat("Tree");
+  return this.http.get<ObservationTagTree[]>(url); 
+  }
   getObservationTag(id: number): Observable<ObservationTag> {
   const url =this.observationTagsUrl.concat("/").concat(id.toString());
   return this.http.get<ObservationTag>(url); 
   }
-
+  saveObservationTagTree(tree: ObservationTagTree[]):  Observable<ObservationTagTree[]> {
+   const url =this.observationTagsUrl.concat("Tree");
+  return this.http.post<ObservationTagTree[]>(url,tree); 
+  }
   
 }
