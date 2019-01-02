@@ -6,6 +6,7 @@ import { ObservationTag, ObservationTagTree } from '../model/observationTag'
 import { ObservationTagService } from '../observation-tag.service';
 
 
+import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
 
 @Component({
   selector: 'app-observation-tag',
@@ -18,7 +19,7 @@ observationTags: ObservationTag[];
  
  observationTagTree: ObservationTagTree[];
 
- observationTreeOptions = 
+ observationTreeOptions: ITreeOptions =
  {
   displayField: 'observationTagName',
     //isExpandedField: 'expanded',
@@ -59,7 +60,11 @@ observationTags: ObservationTag[];
   ngOnInit() {
   this.getObservationTagTree();
   }
-  
+  /*
+  ngAfterViewInit() {
+    this.tree.treeModel.expandAll();
+  }
+*/
   getObservationTags(): void {
   this.observationTagService.getObservationTags()
   .subscribe(observationTags => this.observationTags = observationTags);

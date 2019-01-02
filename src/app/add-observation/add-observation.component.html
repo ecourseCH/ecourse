@@ -4,26 +4,30 @@
 
 
 New observation
+<!--<p>
 <p>
 Text: {{addObservation.observationText}}
+
 <p>
 ActivityId: {{addObservation.activityId}} 
+-->
 <p>
-ObservationId: {{addObservation.observationDate}}
-<p>
+ObservationDate: {{addObservation.observationDate}}
+<!--<p>
 LeaderId: {{addObservation.leaderId}} 
 <p>
 participantId: {{addObservation.participantId}}
 
 </p>
+-->
+ActivityId: {{activity.activityId}} 
+LeaderId: {{leader.leaderId}} 
+<p>
+participantId: {{participant.participantId}}
+
 <div>
   <label>Text:
     <input [(ngModel)]="addObservation.observationText" placeholder="Text">
-  </label>
-</div>
-<div>
-  <label>ActivityId:
-    <input [(ngModel)]="addObservation.activityId" placeholder="ActivityId">
   </label>
 </div>
 <div>
@@ -31,15 +35,51 @@ participantId: {{addObservation.participantId}}
     <input [(ngModel)]="addObservation.observationDate" placeholder="ObservationDate">
   </label>
 </div>
+
+<div class="form-group">
+ <label for="modifyActivity">
+  Activity
+ </label>
+ <select id="modifyActivity" name="modifyActivity" [(ngModel)]="activity" class="form-control" (ngModelChange)="onActivityChange($event)">
+ <option *ngFor="let activity of activitys" [value]="activity.activityId">
+ {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
+ </option>
+ </select>
+
 <div>
-  <label>LeaderId:
-    <input [(ngModel)]="addObservation.leaderId" placeholder="LeaderId">
-  </label>
-</div>
+
+<div class="form-group">
+ <label for="modifyLeader">
+  Leader
+ </label>
+ <select id="modifyLeader" name="modifyLeader" [(ngModel)]="leader" class="form-control" (ngModelChange)="onLeaderChange($event)">
+ <option *ngFor="let leader of leaders" [value]="leader.leaderId">
+ {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
+ </option>
+ </select>
 <div>
-  <label>Participant Id:
-    <input [(ngModel)]="addObservation.participantId" placeholder="participantId">
-  </label>
-</div>
+<div class="form-group">
+ <label for="modifyParticipant">
+  Participant
+ </label>
+ <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="participant" class="form-control" (ngModelChange)="onParticipantChange($event)">
+ <option *ngFor="let participant of participants" [value]="participant.participantId">
+ {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
+ </option>
+ </select>
+<div>
 
 <button (click)="add()">Add observation!</button>
+
+<div>
+  Last added observation:
+  <p>
+Text: {{addedObservation.observationText}}
+<p>
+ActivityId: {{addedObservation.activityId}} 
+<p>
+ObservationId: {{addedObservation.observationDate}}
+<p>
+LeaderId: {{addedObservation.leaderId}} 
+<p>
+participantId: {{addedObservation.participantId}}
