@@ -1,45 +1,41 @@
-<p>
-  modify-leader works!
-</p>
+<h5> 
+Modify your leader here
+</h5>
 
 
 <div class="form-group">
- <label for="modifyLeader">
-  Leader
+ <label for="modifyLeader"  class="col-sm-4 col-form-label">
+  Select leader
  </label>
  <select id="modifyLeader" name="modifyLeader" [(ngModel)]="modifyLeader" class="form-control" (ngModelChange)="onChange($event)">
- <option *ngFor="let leader of leaders" [value]="leader.leaderId">
- Name: {{leader.leaderName}}
-Scoutname: {{leader.leaderScoutname}} 
-Surname: {{leader.leaderSurname}}
+ <option class="dropdown-item" *ngFor="let leader of leaders" [value]="leader.leaderId">
+ {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
  </option>
  </select>
 
-
+<!--
 <p>
 Name: {{modifyLeader.leaderName}}
 <p>
 Scoutname: {{modifyLeader.leaderScoutname}} 
 <p>
 Surname: {{modifyLeader.leaderSurname}}
+-->
 
-
-</p>
+<p>
 <div>
-  <label>name:
-    <input [(ngModel)]="modifyLeader.leaderName" placeholder="name">
-  </label>
+    <input class="form-control"  [(ngModel)]="modifyLeader.leaderName" placeholder="Leader name">
 </div>
+<p>
 <div>
-  <label>Scoutname:
-    <input [(ngModel)]="modifyLeader.leaderScoutname" placeholder="Scoutname">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyLeader.leaderScoutname" placeholder="Leader scoutname">
 </div>
+<p>
 <div>
-  <label>Surname:
-    <input [(ngModel)]="modifyLeader.leaderSurname" placeholder="Surname">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyLeader.leaderSurname" placeholder="Leader surname">
 </div>
-
-<button (click)="modify()">Update leader!</button>
-<button (click)="delete()">Delete leader!</button>
+<p>
+  <div>
+<button type="button" class="btn btn-primary btn-space" (click)="modify()">Update leader!</button>
+<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete leader!</button>
+</div>

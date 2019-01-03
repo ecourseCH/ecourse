@@ -41,7 +41,7 @@ participantId: {{participant.participantId}}
   Activity
  </label>
  <select id="modifyActivity" name="modifyActivity" [(ngModel)]="activity" class="form-control" (ngModelChange)="onActivityChange($event)">
- <option *ngFor="let activity of activitys" [value]="activity.activityId">
+ <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId">
  {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
  </option>
  </select>
@@ -53,7 +53,7 @@ participantId: {{participant.participantId}}
   Leader
  </label>
  <select id="modifyLeader" name="modifyLeader" [(ngModel)]="leader" class="form-control" (ngModelChange)="onLeaderChange($event)">
- <option *ngFor="let leader of leaders" [value]="leader.leaderId">
+ <option class="dropdown-item" *ngFor="let leader of leaders" [value]="leader.leaderId">
  {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
  </option>
  </select>
@@ -63,7 +63,7 @@ participantId: {{participant.participantId}}
   Participant
  </label>
  <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="participant" class="form-control" (ngModelChange)="onParticipantChange($event)">
- <option *ngFor="let participant of participants" [value]="participant.participantId">
+ <option class="dropdown-item" *ngFor="let participant of participants" [value]="participant.participantId">
  {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
  </option>
  </select>

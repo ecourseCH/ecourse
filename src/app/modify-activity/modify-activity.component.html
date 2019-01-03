@@ -1,21 +1,19 @@
-<p>
-  modify-activity works!
-</p>
+<h5> 
+Modify your activity here
+</h5>
 
 
 <div class="form-group">
- <label for="modifyActivity">
-  Activity
+ <label for="modifyActivity" class="col-sm-4 col-form-label">
+  Select activity
  </label>
  <select id="modifyActivity" name="modifyActivity" [(ngModel)]="modifyActivity" class="form-control" (ngModelChange)="onChange($event)">
- <option *ngFor="let activity of activitys" [value]="activity.activityId">
- Name: {{activity.activityName}}
-Number: {{activity.activityNumber}} 
-Date: {{activity.activityDate}}
+ <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId">
+ {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
  </option>
  </select>
 
-
+<!--
 <p>
 Name: {{modifyActivity.activityName}}
 <p>
@@ -25,21 +23,30 @@ Date: {{modifyActivity.activityDate}}
 
 
 </p>
+-->
+<p>
 <div>
-  <label>name:
-    <input [(ngModel)]="modifyActivity.activityName" placeholder="name">
-  </label>
+  
+    <input class="form-control" [(ngModel)]="modifyActivity.activityName" placeholder="Activity name">
+  
 </div>
+<p>
 <div>
-  <label>Number:
-    <input [(ngModel)]="modifyActivity.activityNumber" placeholder="Number">
-  </label>
-</div>
-<div>
-  <label>Date:
-    <input [(ngModel)]="modifyActivity.activityDate" placeholder="Date">
-  </label>
-</div>
 
-<button (click)="modify()">Update activity!</button>
-<button (click)="delete()">Delete activity!</button>
+    <input class="form-control" [(ngModel)]="modifyActivity.activityNumber" placeholder="Activity number">
+ 
+</div>
+<p>
+<div>
+
+    <input class="form-control" [(ngModel)]="modifyActivity.activityDate" placeholder="Activity Date - YYYY-MM-DD HH24:MI">
+
+</div>
+<p>
+
+<div>
+<button type="button" class="btn btn-primary btn-space" (click)="modify()">Update activity!</button>
+
+
+<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete activity!</button>
+</div>

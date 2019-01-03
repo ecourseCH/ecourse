@@ -1,4 +1,4 @@
-<p>
+<!--<p>
   add-leader works!
 </p>
 New leader
@@ -10,28 +10,32 @@ Name: {{addLeader.userId}}
 Scoutname: {{addLeader.leaderScoutname}} 
 <p>
 Surname: {{addLeader.leaderSurname}}
+-->
+<h5> 
+Add your new leader here
+</h5>
+<p></p>
+<div class="col-xs-2">
 
-
+    <input class="form-control" [(ngModel)]="addLeader.leaderName" placeholder="Leader name">
+</div>
+<p>
+</p>
+<div class="col-xs-2">
+    <input class="form-control" [(ngModel)]="addLeader.userid" placeholder="User Id">
+</div>
+<p>
+</p>
+<div class="col-xs-2">
+    <input class="form-control" [(ngModel)]="addLeader.leaderScoutname" placeholder="Leader scoutname">
+</div>
+<p>
+</p>
+<div class="col-xs-2">
+    <input class="form-control" [(ngModel)]="addLeader.leaderSurname" placeholder="Leader surname">
+</div>
+<p>
 </p>
 <div>
-  <label>name:
-    <input [(ngModel)]="addLeader.leaderName" placeholder="name">
-  </label>
+<button type="button" class= "btn btn-primary btn-space" (click)="add()">Add leader!</button>
 </div>
-<div>
-  <label>User Id:
-    <input [(ngModel)]="addLeader.userid" placeholder="User Id">
-  </label>
-</div>
-<div>
-  <label>Scoutname:
-    <input [(ngModel)]="addLeader.leaderScoutname" placeholder="Scoutname">
-  </label>
-</div>
-<div>
-  <label>Surname:
-    <input [(ngModel)]="addLeader.leaderSurname" placeholder="Surname">
-  </label>
-</div>
-
-<button (click)="add()">Add leader!</button>

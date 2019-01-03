@@ -1,4 +1,4 @@
-<p>
+<!--<p>
   add-activity works!
 </p>
 
@@ -9,23 +9,32 @@ Name: {{addActivity.activityName}}
 Number: {{addActivity.activityNumber}} 
 <p>
 Date: {{addActivity.activityDate}}
+-->
 
-
+<h5> 
+Add your new activity here
+</h5>
+<p>
 </p>
-<div>
-  <label>name:
-    <input [(ngModel)]="addActivity.activityName" placeholder="name">
-  </label>
+
+<div class="col-xs-2">
+    <input class="form-control" [(ngModel)]="addActivity.activityName" placeholder="Activity name">
 </div>
-<div>
-  <label>Number:
-    <input [(ngModel)]="addActivity.activityNumber" placeholder="Number">
-  </label>
+<p>
+<div class="col-xs-2">
+
+    <input class="form-control" [(ngModel)]="addActivity.activityNumber" placeholder="Activity number">
+
 </div>
-<div>
-  <label>Date:
-    <input [(ngModel)]="addActivity.activityDate" placeholder="Date">
-  </label>
+<p>
+<div class="col-xs-2">
+
+    <input class="form-control" [(ngModel)]="addActivity.activityDate" placeholder="Activity Date - YYYY-MM-DD HH24:MI">
+
 </div>
 
-<button (click)="add()">Add activity!</button>
+<p>
+<div>
+<button type="button" class="btn btn-primary btn-space" (click)="add()">Add activity!
+</button>
+</div>

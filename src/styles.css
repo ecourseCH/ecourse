@@ -3,3 +3,7 @@
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+
+.btn-space {
+    margin-right: 5px;
+}

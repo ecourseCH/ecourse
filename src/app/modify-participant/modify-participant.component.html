@@ -1,44 +1,40 @@
-<p>
-  modify-participant works!
-</p>
+<h5> 
+Modify your participant here
+</h5>
 
 <div class="form-group">
- <label for="modifyParticipant">
-  Participant
+ <label for="modifyParticipant" class="col-sm-4 col-form-label">
+  Select participant
  </label>
  <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="modifyParticipant" class="form-control" (ngModelChange)="onChange($event)">
- <option *ngFor="let participant of participants" [value]="participant.participantId">
- Name: {{participant.participantName}}
-Scoutname: {{participant.participantScoutname}} 
-Surname: {{participant.participantSurname}}
+ <option class="dropdown-item" *ngFor="let participant of participants" [value]="participant.participantId">
+ {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
  </option>
  </select>
 
-
+<!--
 <p>
 Name: {{modifyParticipant.participantName}}
 <p>
 Scoutname: {{modifyParticipant.participantScoutname}} 
 <p>
 Surname: {{modifyParticipant.participantSurname}}
+-->
 
-
-</p>
+<p>
 <div>
-  <label>name:
-    <input [(ngModel)]="modifyParticipant.participantName" placeholder="name">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantName" placeholder="Participant name">
 </div>
+<p>
 <div>
-  <label>Scoutname:
-    <input [(ngModel)]="modifyParticipant.participantScoutname" placeholder="Scoutname">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantScoutname" placeholder="Participant Scoutname">
 </div>
+<p>
 <div>
-  <label>Surname:
-    <input [(ngModel)]="modifyParticipant.participantSurname" placeholder="Surname">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantSurname" placeholder="Participant Surname">
 </div>
-
-<button (click)="modify()">Update participant!</button>
-<button (click)="delete()">Delete participant!</button>
+<p>
+  <div>
+<button type="button" class="btn btn-primary btn-space" (click)="modify()">Update participant!</button>
+<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete participant!</button>
+</div>

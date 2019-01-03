@@ -1,7 +1,7 @@
-<p>
+<!--<p>
   add-participant works!
 </p>
-<!-- <app-participant-list></app-participant-list> -->
+ <app-participant-list></app-participant-list> 
 
 New participant
 <p>
@@ -11,22 +11,23 @@ Scoutname: {{addParticipant.participantScoutname}}
 <p>
 Surname: {{addParticipant.participantSurname}}
 
-
-</p>
+-->
+<h5> 
+Add your new participant here
+</h5>
+<p>
 <div>
-  <label>name:
-    <input [(ngModel)]="addParticipant.participantName" placeholder="name">
-  </label>
+    <input class="form-control" [(ngModel)]="addParticipant.participantName" placeholder="Participant name">
 </div>
-<div>
-  <label>Scoutname:
-    <input [(ngModel)]="addParticipant.participantScoutname" placeholder="Scoutname">
-  </label>
+<p>
+  <div>
+    <input class="form-control" [(ngModel)]="addParticipant.participantScoutname" placeholder="Participant scoutname">
 </div>
-<div>
-  <label>Surname:
-    <input [(ngModel)]="addParticipant.participantSurname" placeholder="Surname">
-  </label>
+<p>
+  <div>
+    <input class="form-control" [(ngModel)]="addParticipant.participantSurname" placeholder="Participant surname">
 </div>
-
-<button (click)="add()">Add participant!</button>
+<p>
+  <div>
+<button type="button" class="btn btn-primary btn-space" (click)="add()">Add participant!</button>
+</div>
