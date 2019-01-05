@@ -1,14 +1,26 @@
-<p>
-  participant-list works!
-</p>
-List of participants
-<!--<ul> <li *ngFor="let participant of participants" > {{participant.participantName  participant.participantSurname v/o participant.participantScoutname}}</li> 
--->
-<ul> <li *ngFor="let participant of participants">
- <a routerLink="/participant/{{participant.participantId}}">
-      <span class="badge"></span> {{participant.participantName}} {{participant.participantSurname}} 
-v/o {{participant.participantScoutname}}
-    </a>
-</li> 
+<div class="container">
+	<div ng-view class="ng-scope">
+		<p>
+	<h2 class="ng-binding ng-scope">Participant list </h2>
+<table class="table table-striped ng-scope">
+	<thead>
+		<tr>
+			<th class="ng-binding"> Scout name </th>
+			<th class="ng-binding">
+			Name </th>
+			<th class="ng-binding">
+			Surname </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let participant of participants" class="ng-scope" (click)="goToParticipant(participant.participantId)">
 
-</ul>
+			<th>{{participant.participantScoutname}} </th>
+			<th> {{participant.participantName}}  </th>
+			<th> {{participant.participantSurname}}  </th>
+		
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>

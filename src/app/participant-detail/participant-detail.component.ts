@@ -13,7 +13,7 @@ import { ParticipantService } from '../participant.service';
 })
 export class ParticipantDetailComponent implements OnInit {
 
-@Input() participant: Participant;
+@Input() participant: Participant = new Participant;
 
 constructor( private route: ActivatedRoute,
 private participantService: ParticipantService,

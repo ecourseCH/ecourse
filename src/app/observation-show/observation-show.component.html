@@ -1,13 +1,32 @@
-<h3>
-  observation-show works!
-  </h3>
-<ul> <li *ngFor="let observation of showObservations">
- <a routerLink="/observation/{{observation.observationId}}">
- <div class="module observation">
-      <span class="badge"></span><h4> {{observation.observationText}} ; {{observation.activityId}};
-      {{observation.observationDate}};{{observation.leaderId}};{{observation.participantId}}</h4>
-      </div>
-    </a>
-</li> 
+<div class="container">
+	<div ng-view class="ng-scope">
+		<p>
+	<h2 class="ng-binding ng-scope">Observation </h2>
+<table class="table table-striped ng-scope">
+	<thead>
+		<tr>
+			<th class="ng-binding"> Observation text </th>
+			<th class="ng-binding">
+			Activity </th>
+			<th class="ng-binding">
+			Observation date </th>
+			<th class="ng-binding">
+			Leader </th>
+			<th class="ng-binding">
+			Participant </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let observation of showObservations" class="ng-scope" (click)="goToObservation(observation.observationId)">
 
-</ul>
+			<th>{{observation.observationText}} </th>
+			<th> {{observation.activityId}} </th>
+			<th> {{observation.observationDate}}</th>
+		<th> {{observation.leaderId}}</th>
+		<th> {{observation.participantId}}</th>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+

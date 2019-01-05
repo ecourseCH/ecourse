@@ -1,11 +1,11 @@
 
-<h3>Top Heroes</h3>
+<h3>Participant overview</h3>
 <div class="grid grid-pad">
   <a *ngFor="let participant of participants"
   routerLink="/participant/{{participant.participantId}}"
-  class="col-1-4">
-    <div class="module participant">
+  class="col-md-6">
+    
       <h4>{{participant.participantScoutname}}</h4>
-    </div>
+   
   </a>
 </div>

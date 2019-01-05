@@ -18,11 +18,12 @@
   </li>
 </ul>
 -->
-<nav>
+<div >
+<nav class=" navbar-dark">
 <ul>
   <li><a routerLink="/dashboard">Dashboard</a></li>
-  <li>  <a routerLink="/participant">Participant-List</a></li>
-  <li>  <a routerLink="/activity">Activity-List</a></li>
+  <li>  <a routerLink="/participant">Participant list</a></li>
+  <li>  <a routerLink="/activity">Activity list</a></li>
     <li>  <a routerLink="/observation">Add observation</a></li>
 
   <li>  <a routerLink="/observationTag">ObservationTag</a></li>
@@ -30,10 +31,8 @@
 
 </ul>
    
-  
-
-  
 </nav>
 <router-outlet></router-outlet>
 <!--<app-participant-detail [participant]="selectedParticipant"></app-participant-detail>-->
 
+</div>

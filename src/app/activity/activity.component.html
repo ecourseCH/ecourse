@@ -1,21 +1,31 @@
-<p>
-  activity works!
-</p>
-<div>
-{{activity.activityId}} 
-
-{{activity.activityNumber}} {{activity.activityName}} {{activity.activityDate}}
+<div class="container">
+	<div ng-view class="ng-scope">
+		<p>
+	<h2 class="ng-binding ng-scope">Activity details </h2>
+<table class="table table-striped ng-scope">
+	<thead>
+		<tr>
+			<th class="ng-binding"> Activity number </th>
+			<th class="ng-binding">
+			Activity name </th>
+			<th class="ng-binding">
+			Activity date </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="ng-scope">
+			<th>{{activity.activityNumber}} </th>
+			<th> {{activity.activityName}} </th>
+			<th> {{activity.activityDate}} </th>
+		</tr>
+	</tbody>
+</table>
+</div>
 </div>
 
-All observations:
-<!--<app-observation-show ></app-observation-show>
+<p>
 
-Observation for activity 1
-<app-observation-show [activityId]="1"></app-observation-show>-->
-correct:
+
+
 <app-observation-show [activityId]="activity.activityId"></app-observation-show>
-<!--
-<app-observation-show [(activityId)]="{{activity.activityId}}"></app-observation-show>
 
-<app-observation-show [(activityId)]="{{activity.activityId}}"></app-observation-show>
--->

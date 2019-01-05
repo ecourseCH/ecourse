@@ -1,10 +1,17 @@
-<p>
-  participant-detail works!
-</p>
+<div> <h2 class="ng-binding ng-scope"> {{participant.participantScoutname}} </h2>
+<dl>
+	<dt class="ng-binding">Name</dt>
+<dd class="ng-binding"> {{participant.participantName}} {{participant.participantSurname}} v/o {{participant.participantScoutname}}</dd>
 
-{{participant.participantName}} {{participant.participantSurname}} v/o {{participant.participantScoutname}}
-<p>
-  
-</p>
+<dt class="ng-binding">Birthday</dt>
+<dd class="ng-binding"> tbd </dd>
+<dt class="ng-binding">Scout unit</dt>
+<dd class="ng-binding"> tbd</dd>
+<dt class="ng-binding">Info from recommending person</dt>
+<dd class="ng-binding"> tbd </dd>
+
+</dl>
+
+</div>
 
 <app-observation-show [participantId]="participant.participantId"></app-observation-show>

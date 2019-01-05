@@ -4,7 +4,7 @@ Modify your activity here
 
 
 <div class="form-group">
- <label for="modifyActivity" class="col-sm-4 col-form-label">
+ <label for="modifyActivity" class=" col-form-label">
   Select activity
  </label>
  <select id="modifyActivity" name="modifyActivity" [(ngModel)]="modifyActivity" class="form-control" (ngModelChange)="onChange($event)">
@@ -42,7 +42,7 @@ Date: {{modifyActivity.activityDate}}
     <input class="form-control" [(ngModel)]="modifyActivity.activityDate" placeholder="Activity Date - YYYY-MM-DD HH24:MI">
 
 </div>
-<p>
+<p></p>
 
 <div>
 <button type="button" class="btn btn-primary btn-space" (click)="modify()">Update activity!</button>

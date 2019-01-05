@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 
+import { Router } from '@angular/router';
 
 import { Observation } from '../model/observation'
 
@@ -21,7 +22,7 @@ export class ObservationShowComponent implements OnInit {
  
 private _activityId: number;
  private _participantId: number; 
- 
+
  
  @Input() set activityId(id: number) {
  this._activityId = id;
@@ -36,7 +37,7 @@ private _activityId: number;
  }
  ;
  
-  constructor(private observationService: ObservationService) { }
+  constructor(private router: Router,private observationService: ObservationService) { }
 
   ngOnInit() {
  /* this.getSomeObservations();
@@ -55,6 +56,8 @@ private _activityId: number;
   this.observationService.getSomeObservations(this.restrictedObservation)
   .subscribe(showObservations => this.showObservations = showObservations);
   }
-  
+  goToObservation( id: number){
+   this.router.navigate(["/observation/".concat(id.toString())]);
+ }
  
 }

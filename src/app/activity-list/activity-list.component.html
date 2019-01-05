@@ -1,12 +1,29 @@
-<p>
-  activity-list works!
-</p>
-<p>
+<div class="container">
+	<div ng-view class="ng-scope">
+		<p>
+	<h2 class="ng-binding ng-scope">Activity list </h2>
+<table class="table table-striped ng-scope">
+	<thead>
+		<tr>
+			<th class="ng-binding"> Activity number </th>
+			<th class="ng-binding">
+			Activity name </th>
+			<th class="ng-binding">
+			Activity date </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let activity of activities" class="ng-scope" (click)="goToActivity(activity.activityId)">
 
-<ul> <li *ngFor="let activity of activities">
-<a routerLink="/activity/{{activity.activityId}}">
-      <span class="badge"></span>  {{activity.activityNumber}} {{activity.activityName}} {{activity.activityDate}}
-      </a>
-</li> 
+			<th>{{activity.activityNumber}} </th>
+			<th> {{activity.activityName}} </th>
+			<th> {{activity.activityDate}} </th>
+		
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
 
-</ul>
+
+

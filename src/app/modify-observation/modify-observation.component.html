@@ -1,7 +1,8 @@
-<p>
-  modify-observation works!
-</p>
+<h5> 
+Modify your observation here
+</h5>
 
+<!--
 
 <div class="form-group">
  <label for="modifyObservation">
@@ -30,30 +31,28 @@ LeaderId: {{modifyObservation.leaderId}}
 ParticipantId: {{modifyObservation.participantId}} 
 
 </p>
+-->
+<div class="col-md-6">
 <div>
-  <label>Text:
-    <input [(ngModel)]="modifyObservation.observationText" placeholder="Text">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyObservation.observationText" placeholder="Observation text">
 </div>
+<p></p>
 <div>
-  <label>ActivityId:
-    <input [(ngModel)]="modifyObservation.activityId" placeholder="ActivityId">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyObservation.activityId" placeholder="ActivityId">
 </div>
+<p></p>
 <div>
-  <label>Date:
-    <input [(ngModel)]="modifyObservation.observationDate" placeholder="Date">
-  </label>
-</div>
+    <input class="form-control" [(ngModel)]="modifyObservation.observationDate" placeholder="Observation date">
+</div><p></p>
 <div>
-  <label>LeaderId:
-    <input [(ngModel)]="modifyObservation.leaderId" placeholder="LeaderId">
-  </label>
-</div>
+    <input class="form-control" [(ngModel)]="modifyObservation.leaderId" placeholder="LeaderId">
+</div><p></p>
 <div>
-  <label>ParticipantId:
-    <input [(ngModel)]="modifyObservation.participantId" placeholder="ParticipantId">
-  </label>
+    <input class="form-control" [(ngModel)]="modifyObservation.participantId" placeholder="ParticipantId">
 </div>
-<button (click)="modify()">Update observation!</button>
-<button (click)="delete()">Delete observation!</button>
+<p></p>
+<div>
+<button  type="button" class="btn btn-primary btn-space" (click)="modify()">Update observation!</button>
+<button  type="button" class="btn btn-primary btn-space" (click)="delete()">Delete observation!</button>
+</div>
+</div>
