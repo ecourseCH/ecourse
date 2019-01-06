@@ -3,5 +3,9 @@ export class Participant{
   participantScoutname: string;
   participantName: string;
   participantSurname: string;
+  participantBirthday: Date;
+  participantScoutUnit: string;
   participantUrl: string;
+  participantRecommendationRemark: string;
+
 } 
