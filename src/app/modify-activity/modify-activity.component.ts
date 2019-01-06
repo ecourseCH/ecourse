@@ -19,6 +19,8 @@ export class ModifyActivityComponent implements OnInit {
  
  modifyActivity: Activity = new Activity;
  
+selectedActivityId: number ;
+
  test: Observable<any>;
  
   constructor(private activityService: ActivityService) { }
@@ -26,12 +28,24 @@ export class ModifyActivityComponent implements OnInit {
   ngOnInit() {
   this.getActivitys();
   }
-  
-getActivity(Id){
- this.activityService.getActivity(Id)
-  .subscribe(modifyActivity => this.modifyActivity = modifyActivity);
+ /* 
+getActivity(id){
+for (var i=0; i<this.activitys.length; i++){
+  if(this.activitys[i].activityId == id){
+    // set activity
+    this.modifyActivity = this.activitys[i];
+  } 
+ if (this.modifyActivity.activityId == id){
+ // success 
+} else {
+ // TODO error case
 }
-  
+}
+
+
+
+}
+*/  
 getActivitys(): void {
  
   this.activityService.getActivitys()
@@ -43,6 +57,7 @@ modify(): void {
   .subscribe(modifyActivity => this.modifyActivity = modifyActivity);
   
   this.getActivitys();
+
 }
 
 delete(): void {
@@ -53,7 +68,19 @@ this.modifyActivity = new Activity;
 this.getActivitys();
 }
 onChange(newValue){
-this.getActivity(newValue);
+//this.getActivity(newValue);
+this.selectedActivityId = newValue;
+for (var i=0; i<this.activitys.length; i++){
+  if(this.activitys[i].activityId == newValue){
+    // set activity
+    this.modifyActivity = this.activitys[i];
+  } 
+ if (this.modifyActivity.activityId == newValue){
+ // success 
+} else {
+ // TODO error case
+}
 }
 
+}
 }

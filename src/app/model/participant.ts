@@ -3,4 +3,5 @@ export class Participant{
   participantScoutname: string;
   participantName: string;
   participantSurname: string;
+  participantUrl: string;
 } 

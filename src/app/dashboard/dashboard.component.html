@@ -1,11 +1,23 @@
 
-<h3>Participant overview</h3>
+<!--<h3>Participant overview</h3>
+-->
+<p></p>
 <div class="grid grid-pad">
   <a *ngFor="let participant of participants"
   routerLink="/participant/{{participant.participantId}}"
-  class="col-md-6">
-    
+  class="col-md-4 ng-binding text-body">
+  <div class="space">
+  <img src="https://www.ethz.ch/de/studium/bachelor/studienangebot/naturwissenschaften-und-mathematik/rechnergestuetzte-wissenschaften/studierende-erzaehlen/_jcr_content/par/textimage_1/image.imageformat.textsingle.904202445.jpg"
+  alt="Picture of participant" style="float:left;max-width:100px;max-height:100px;border:0;">
+</div>
+<br>
+<span class="tab" style="display:inline-block; 
+       margin-left: 20px;">
+  <div class="">
       <h4>{{participant.participantScoutname}}</h4>
-   
+      # observations: {{getRandomNumber()}}
+
+  </div>
+</span>
   </a>
 </div>

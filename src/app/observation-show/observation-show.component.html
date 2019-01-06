@@ -2,7 +2,7 @@
 	<div ng-view class="ng-scope">
 		<p>
 	<h2 class="ng-binding ng-scope">Observation </h2>
-<table class="table table-striped ng-scope">
+<table class="table table-striped ng-scope table-hover">
 	<thead>
 		<tr>
 			<th class="ng-binding"> Observation text </th>
@@ -20,10 +20,10 @@
 		<tr *ngFor="let observation of showObservations" class="ng-scope" (click)="goToObservation(observation.observationId)">
 
 			<th>{{observation.observationText}} </th>
-			<th> {{observation.activityId}} </th>
+			<th> {{getActivityString(observation.activityId)}} </th>
 			<th> {{observation.observationDate}}</th>
-		<th> {{observation.leaderId}}</th>
-		<th> {{observation.participantId}}</th>
+		<th> {{getLeaderString(observation.leaderId)}}</th>
+		<th> {{getParticipantString(observation.participantId)}}</th>
 		</tr>
 	</tbody>
 </table>

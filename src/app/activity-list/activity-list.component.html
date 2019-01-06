@@ -2,7 +2,7 @@
 	<div ng-view class="ng-scope">
 		<p>
 	<h2 class="ng-binding ng-scope">Activity list </h2>
-<table class="table table-striped ng-scope">
+<table class="table table-striped ng-scope  table-hover">
 	<thead>
 		<tr>
 			<th class="ng-binding"> Activity number </th>
@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let activity of activities" class="ng-scope" (click)="goToActivity(activity.activityId)">
+		<tr *ngFor="let activity of sortActivityArray(activities)" class="ng-scope" (click)="goToActivity(activity.activityId)">
 
 			<th>{{activity.activityNumber}} </th>
 			<th> {{activity.activityName}} </th>
@@ -24,6 +24,3 @@
 </table>
 </div>
 </div>
-
-
-

@@ -36,7 +36,8 @@ participantId: {{participant.participantId}}
 
 <div class="col-lg-6">
 
-    <input class="form-control" [(ngModel)]="addObservation.observationText" placeholder="Observation text">
+    <textarea class="form-control" rows="5" [(ngModel)]="addObservation.observationText" placeholder="Observation text">
+    </textarea>
 </div>
 <p>
   </p>
@@ -87,22 +88,11 @@ participantId: {{participant.participantId}}
 </div>
 <p>
 </p>
-
-  Last added observation:
+<div class="col-lg-6">
+  <h5 >Last added observation: </h5>
 <p>
 </p>
-Text: {{addedObservation.observationText}}
+ {{addedObservation.observationText}}
 <p>
-</p>
-ActivityId: {{addedObservation.activityId}} 
-<p>
-</p>
-ObservationId: {{addedObservation.observationDate}}
-<p>
-</p>
-LeaderId: {{addedObservation.leaderId}} 
-<p>
-</p>
-participantId: {{addedObservation.participantId}}
 
 </div>

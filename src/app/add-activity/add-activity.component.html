@@ -17,8 +17,9 @@ Add your new activity here
 <p>
 </p>
 
-<div class="col-xs-2">
-    <input class="form-control" [(ngModel)]="addActivity.activityName" placeholder="Activity name">
+<div class="col-xs-2 form-group">
+    <input type="text" class="form-control" id="Name" [(ngModel)]="addActivity.activityName"  required>
+    <label class="form-control-placeholder" for="Name">Activity name</label>
 </div>
 <p>
 <div class="col-xs-2">

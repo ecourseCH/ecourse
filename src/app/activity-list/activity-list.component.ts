@@ -24,11 +24,26 @@ export class ActivityListComponent implements OnInit {
   ngOnInit() {
   this.getActivitys();
   }
-  
+
+sortActivityArray(a: any[]):any[]{
+
+return a.sort(this.sortActivities);
+
+}
+
+sortActivities(a: Activity,b:Activity): number{
+
+	return  a.activityNumber - b.activityNumber;
+	
+}
+
 getActivitys(): void {
  
   this.activityService.getActivitys().subscribe(activities => this.activities = activities);
+ //this.activities = this.activities.sort(this.sortActivities);
 }
+
+
  goToActivity( id: number){
  	this.router.navigate(["/activity/".concat(id.toString())]);
  }

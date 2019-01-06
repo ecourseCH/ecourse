@@ -1,6 +1,9 @@
-<h5> 
-Modify your observation here
-</h5>
+<div >
+  <div class="col-lg-6">
+  <h2>Modify your observation here</h2>
+</div>
+<p>
+</p>
 
 <!--
 
@@ -34,21 +37,54 @@ ParticipantId: {{modifyObservation.participantId}}
 -->
 <div class="col-md-6">
 <div>
-    <input class="form-control" [(ngModel)]="modifyObservation.observationText" placeholder="Observation text">
+    <textarea class="form-control" rows="5" [(ngModel)]="modifyObservation.observationText" placeholder="Observation text">
+    </textarea>
+</div>
+
+<!--<div>activityId {{modifyObservation.activityId}}</div>-->
+
+
+
+<p></p>
+<div class="form-group ">
+ <label for="modifyActivity" class="col-form-label">
+ Select activity
+ </label>
+ <select id="modifyActivity" name="modifyActivity" [(ngModel)]="activity" class="form-control" (ngModelChange)="onActivityChange($event)" >
+ <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId" [selected]="activity === selectedActivity">
+ {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
+ </option>
+ </select>
+
 </div>
 <p></p>
+
 <div>
-    <input class="form-control" [(ngModel)]="modifyObservation.activityId" placeholder="ActivityId">
-</div>
-<p></p>
-<div>
-    <input class="form-control" [(ngModel)]="modifyObservation.observationDate" placeholder="Observation date">
+    <input class="form-control" [(ngModel)]="modifyObservation.observationDate" placeholder="Observation date - YYYY-MM-DD HH24:MI">
 </div><p></p>
-<div>
-    <input class="form-control" [(ngModel)]="modifyObservation.leaderId" placeholder="LeaderId">
+
+<!--<div>leaderId {{modifyObservation.leaderId}}</div>-->
+<div class="form-group ">
+ <label for="modifyLeader" class="col-form-label">
+  Select leader
+ </label>
+ <select id="modifyLeader" name="modifyLeader" [(ngModel)]="leader" class="form-control" (ngModelChange)="onLeaderChange($event)">
+ <option class="dropdown-item" *ngFor="let leader of leaders" [value]="leader.leaderId"
+ [selected]="leader === selectedLeader">
+ {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
+ </option>
+ </select>
 </div><p></p>
-<div>
-    <input class="form-control" [(ngModel)]="modifyObservation.participantId" placeholder="ParticipantId">
+<!--<div>participantId {{modifyObservation.participantId}}</div>-->
+<div class="form-group ">
+ <label for="modifyParticipant" class="col-form-label">
+  Select participant
+ </label>
+ <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="participant" class="form-control" (ngModelChange)="onParticipantChange($event)">
+ <option class="dropdown-item" *ngFor="let participant of participants" [value]="participant.participantId" [selected]="participant === selectedParticipant">
+ {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
+ </option>
+ </select>
 </div>
 <p></p>
 <div>

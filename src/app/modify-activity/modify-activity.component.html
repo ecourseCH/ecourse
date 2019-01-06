@@ -8,7 +8,7 @@ Modify your activity here
   Select activity
  </label>
  <select id="modifyActivity" name="modifyActivity" [(ngModel)]="modifyActivity" class="form-control" (ngModelChange)="onChange($event)">
- <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId">
+ <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId" [selected]="activity.activityId === selectedActivityId">
  {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
  </option>
  </select>
@@ -39,7 +39,7 @@ Date: {{modifyActivity.activityDate}}
 <p>
 <div>
 
-    <input class="form-control" [(ngModel)]="modifyActivity.activityDate" placeholder="Activity Date - YYYY-MM-DD HH24:MI">
+    <input class="form-control" [(ngModel)]="modifyActivity.activityDate" placeholder="Activity date - YYYY-MM-DD HH24:MI">
 
 </div>
 <p></p>

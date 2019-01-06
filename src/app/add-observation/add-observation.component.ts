@@ -40,7 +40,10 @@ leader: Leader = new Leader;
 
   
 
-  constructor(private observationService: ObservationService,private leaderService: LeaderService,private activityService: ActivityService,private participantService: ParticipantService) { }
+  constructor(private observationService: ObservationService
+    ,private leaderService: LeaderService
+    ,private activityService: ActivityService
+    ,private participantService: ParticipantService) { }
 
   ngOnInit() {
   this.getParticipants();
@@ -76,18 +79,27 @@ getActivitys(): void {
 
   onActivityChange(newValue){
   this.addObservation.activityId = newValue;
+    // TODO what do I need to do that the dropdown shows me the current selected object?
+/*
    this.activityService.getActivity(newValue)
   .subscribe(activity => this.activity = activity);
-
+*/
 }
 
   onLeaderChange(newValue){
   this.addObservation.leaderId = newValue;
-
+  // TODO what do I need to do that the dropdown shows me the current selected object?
+  /* this.activityService.getActivity(newValue)
+  .subscribe(activity => this.activity = activity);
+*/
 }
  onParticipantChange(newValue){
   this.addObservation.participantId = newValue;
+    // TODO what do I need to do that the dropdown shows me the current selected object?
 
+/*    this.activityService.getActivity(newValue)
+  .subscribe(activity => this.activity = activity);
+  */
 }
 
 }
