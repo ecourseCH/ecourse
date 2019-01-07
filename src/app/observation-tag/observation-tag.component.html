@@ -1,9 +1,17 @@
+
+
+
+<tree-root #tree [nodes]="observationTagTree" [options]="observationTreeOptions"></tree-root>
+
+
 <p>
-  observation-tag works!
-</p>
+  <div>
+<button type="button" class="btn btn-primary btn-space" (click)="modify()">Save Tree!</button>
+<button type="button" class="btn btn-primary btn-space" (click)="add()">Add new node!</button>
+<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete selected node!</button>
+<button type="button" class="btn btn-primary btn-space" (click)="expandAll()">Expand all</button>
+<button type="button" class="btn btn-primary btn-space" (click)="collapseAll()">collapse all</button>
+</div>
 
-  
 
-
-<tree-root [nodes]="observationTagTree" [options]="observationTreeOptions"></tree-root>
-<button (click)="saveTree()">Save Tree</button>
+{{log}}

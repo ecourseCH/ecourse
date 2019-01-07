@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit , ViewChild} from '@angular/core';
 
 
 import { ObservationTag, ObservationTagTree } from '../model/observationTag'
@@ -6,7 +6,7 @@ import { ObservationTag, ObservationTagTree } from '../model/observationTag'
 import { ObservationTagService } from '../observation-tag.service';
 
 
-import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
+import { TreeComponent, TreeNode, TreeModel ,TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
 
 @Component({
   selector: 'app-observation-tag',
@@ -14,6 +14,8 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
   styleUrls: ['./observation-tag.component.css']
 })
 export class ObservationTagComponent implements OnInit {
+
+  @ViewChild('tree') treeComponent: TreeComponent;
 
 observationTags: ObservationTag[];
  
@@ -25,7 +27,7 @@ observationTags: ObservationTag[];
     //isExpandedField: 'expanded',
     idField: 'observationTagId',
     hasChildrenField: 'children',
-  /*  actionMapping: {
+    actionMapping: {
       mouse: {
         dblClick: (tree, node, $event) => {
           if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
@@ -36,7 +38,7 @@ observationTags: ObservationTag[];
           node.expandAll();
         }
       }
-    },*/
+    },
     nodeHeight: 23,
     allowDrag: (node) => {
       return true;
@@ -54,17 +56,31 @@ observationTags: ObservationTag[];
     //scrollContainer: document.documentElement // HTML
   }
 
+public log: string = "Hello world";
+
   constructor(private observationTagService: ObservationTagService) {
   
   }
   ngOnInit() {
   this.getObservationTagTree();
+this.log= "nginit"
   }
   /*
   ngAfterViewInit() {
     this.tree.treeModel.expandAll();
   }
 */
+
+// TODO why does this not work???
+  ngAfterInit() {
+    const treeModel:TreeModel = this.treeComponent.treeModel;
+    const firstNode:TreeNode = treeModel.getFirstRoot();
+    firstNode.expandAll();
+    //firstNode.setActiveAndVisible();
+    treeModel.expandAll();
+    this.log = "afterviewinit";
+  }
+
   getObservationTags(): void {
   this.observationTagService.getObservationTags()
   .subscribe(observationTags => this.observationTags = observationTags);
@@ -76,12 +92,30 @@ observationTags: ObservationTag[];
   }
   
   saveTree(){
+
   this.observationTagService.saveObservationTagTree(this.observationTagTree).subscribe(observationTagTree => this.observationTagTree = observationTagTree);
   }
 
-  
-  
-  
-  
+  delete(){
+    //TODO
+  }
+  add(){
+    //TOOD
+  }
+  modify(){
+
+  }
+  expandAll(){
+      const treeModel:TreeModel = this.treeComponent.treeModel;
+    treeModel.expandAll();
+        this.log = "expand all";
+//window.location.reload();
+  }
+  collapseAll(){
+          const treeModel:TreeModel = this.treeComponent.treeModel;
+    treeModel.collapseAll();
+        this.log = "collapse all";
+//window.location.reload();
+  }
   
 }
