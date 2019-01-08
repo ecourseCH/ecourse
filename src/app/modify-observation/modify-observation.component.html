@@ -46,12 +46,13 @@ ParticipantId: {{modifyObservation.participantId}}
 
 
 <p></p>
+
 <div class="form-group ">
  <label for="modifyActivity" class="col-form-label">
  Select activity
  </label>
- <select id="modifyActivity" name="modifyActivity" [(ngModel)]="activity" class="form-control" (ngModelChange)="onActivityChange($event)" >
- <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId" [selected]="activity === selectedActivity">
+ <select id="modifyActivity" name="modifyActivity" class="form-control" (ngModelChange)="onActivityChange($event)" >
+ <option class="dropdown-item" *ngFor="let activity of activitys" [value]="activity.activityId" [selected]="activity.activityId === modifyObservation.activityId">
  {{activity.activityNumber}} - {{activity.activityName}} - {{activity.activityDate}}
  </option>
  </select>
@@ -68,7 +69,7 @@ ParticipantId: {{modifyObservation.participantId}}
  <label for="modifyLeader" class="col-form-label">
   Select leader
  </label>
- <select id="modifyLeader" name="modifyLeader" [(ngModel)]="leader" class="form-control" (ngModelChange)="onLeaderChange($event)">
+ <select id="modifyLeader" name="modifyLeader" class="form-control" (ngModelChange)="onLeaderChange($event)" >
  <option class="dropdown-item" *ngFor="let leader of leaders" [value]="leader.leaderId"
  [selected]="leader === selectedLeader">
  {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
@@ -80,7 +81,7 @@ ParticipantId: {{modifyObservation.participantId}}
  <label for="modifyParticipant" class="col-form-label">
   Select participant
  </label>
- <select id="modifyParticipant" name="modifyParticipant" [(ngModel)]="participant" class="form-control" (ngModelChange)="onParticipantChange($event)">
+ <select id="modifyParticipant" name="modifyParticipant"  class="form-control" (ngModelChange)="onParticipantChange($event)" >
  <option class="dropdown-item" *ngFor="let participant of participants" [value]="participant.participantId" [selected]="participant === selectedParticipant">
  {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
  </option>
@@ -88,7 +89,10 @@ ParticipantId: {{modifyObservation.participantId}}
 </div>
 <p></p>
 <div>
-<button  type="button" class="btn btn-primary btn-space" (click)="modify()">Update observation!</button>
-<button  type="button" class="btn btn-primary btn-space" (click)="delete()">Delete observation!</button>
+	
+<button  type="button" class="btn btn-secondary btn-space" (click)="modify()">Update observation!</button>
+<button  type="button" class="btn btn-secondary btn-space" (click)="delete()">Delete observation!</button>
+
+
 </div>
 </div>

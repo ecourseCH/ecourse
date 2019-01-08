@@ -54,10 +54,13 @@ getActivitys(): void {
 
 modify(): void {
   this.activityService.updateActivity(this.modifyActivity)
-  .subscribe(modifyActivity => this.modifyActivity = modifyActivity);
+  .subscribe();
   
+  this.modifyActivity = new Activity;
+
   this.getActivitys();
 
+// todo reload dropdown
 }
 
 delete(): void {
@@ -65,8 +68,13 @@ this.activityService.deleteActivity(this.modifyActivity).subscribe(
       error => this.test = error
       );
 this.modifyActivity = new Activity;
+
 this.getActivitys();
+
+// todo reload dropdown
+
 }
+
 onChange(newValue){
 //this.getActivity(newValue);
 this.selectedActivityId = newValue;
@@ -82,5 +90,11 @@ for (var i=0; i<this.activitys.length; i++){
 }
 }
 
+
 }
+
+abort(): void{
+this.modifyActivity = new Activity;
+}
+
 }

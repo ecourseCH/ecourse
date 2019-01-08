@@ -1,9 +1,9 @@
 <h5> 
 Modify your leader here
 </h5>
-
-
 <div class="form-group">
+<div *ngIf="modifyLeader.leaderId == null">
+
  <label for="modifyLeader"  class=" col-form-label">
   Select leader
  </label>
@@ -12,6 +12,7 @@ Modify your leader here
  {{leader.leaderScoutname}} - {{leader.leaderName}} - {{leader.leaderSurname}}
  </option>
  </select>
+</div>
 
 <!--
 <p>
@@ -21,7 +22,7 @@ Scoutname: {{modifyLeader.leaderScoutname}}
 <p>
 Surname: {{modifyLeader.leaderSurname}}
 -->
-
+<div *ngIf="modifyLeader.leaderId" >
 <p>
 <div>
     <input class="form-control"  [(ngModel)]="modifyLeader.leaderName" placeholder="Leader name">
@@ -36,6 +37,9 @@ Surname: {{modifyLeader.leaderSurname}}
 </div>
 <p>
   <div>
-<button type="button" class="btn btn-primary btn-space" (click)="modify()">Update leader!</button>
-<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete leader!</button>
+  		<button type="button" class="btn btn-secondary btn-space" (click)="abort()">abort!</button>
+<button type="button" class="btn btn-secondary btn-space" (click)="modify()">Update leader!</button>
+<button type="button" class="btn btn-secondary btn-space" (click)="delete()">Delete leader!</button>
+</div>
+</div>
 </div>

@@ -41,7 +41,7 @@ getParticipants(): void {
 modify(): void {
   this.participantService.updateParticipant(this.modifyParticipant)
   .subscribe(modifyParticipant => this.modifyParticipant = modifyParticipant);
-  
+  this.modifyParticipant = new Participant;
   this.getParticipants();
 }
 
@@ -55,5 +55,7 @@ this.getParticipants();
 onChange(newValue){
 this.getParticipant(newValue);
 }
-
+abort(): void{
+this.modifyParticipant = new Participant;
+}
 }

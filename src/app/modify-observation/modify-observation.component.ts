@@ -36,11 +36,11 @@ export class ModifyObservationComponent implements OnInit {
  test: Observable<any>;
  
   participants: Participant[] ;
-  selectedParticipant: Participant = new Participant;
+ // selectedParticipant: Participant = new Participant;
   leaders: Leader[] ;
-  selectedLeader: Leader = new Leader;
+ // selectedLeader: Leader = new Leader;
   activitys: Activity[] ;
-  selectedActivity: Activity = new Activity;
+//  selectedActivity: Activity = new Activity;
 
 
 
@@ -63,10 +63,11 @@ export class ModifyObservationComponent implements OnInit {
  @Input() set observationId(id: number) {
  this.getObservationById(id);
   // TODO how to ensure all services have returned?
-  this.setSelectedParticipant(this.modifyObservation.participantId);
+/*  this.setSelectedParticipant(this.modifyObservation.participantId);
   this.setSelectedLeader(this.modifyObservation.leaderId);
   this.setSelectedActivity(this.modifyObservation.activityId);
- }
+ */
+}
  
 getObservationById(id: number): void{
  this.observationService.getObservation(id)
@@ -101,8 +102,8 @@ getObservations(): void {
  
   this.observationService.getObservations()
   .subscribe(observations => this.observations = observations);
-}
-*/
+}*/
+
 modify(): void {
   this.observationService.updateObservation(this.modifyObservation)
   .subscribe(modifyObservation => this.modifyObservation = modifyObservation);
@@ -123,7 +124,7 @@ onChange(newValue){
 this.getObservation(newValue);
 }
 */
-
+/*
 setSelectedActivity(id: number): void{
 for (var i=0; i<this.activitys.length; i++){
   if(this.activitys[i].activityId == id){
@@ -169,25 +170,25 @@ for (var i=0; i<this.participants.length; i++){
 }
 
 }
-
+*/
 
 
 
   onActivityChange(newValue){
   this.modifyObservation.activityId = newValue;
-  this.setSelectedActivity(newValue);
+  //this.setSelectedActivity(newValue);
 
 }
 
   onLeaderChange(newValue){
   this.modifyObservation.leaderId = newValue;
-    this.setSelectedLeader(newValue);
+   // this.setSelectedLeader(newValue);
 
 
 }
  onParticipantChange(newValue){
   this.modifyObservation.participantId = newValue;
-    this.setSelectedParticipant(newValue);
+    //this.setSelectedParticipant(newValue);
 
 }
 

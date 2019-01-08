@@ -55,5 +55,7 @@ this.getLeaders();
 onChange(newValue){
 this.getLeader(newValue);
 }
-
+abort(): void{
+this.modifyLeader = new Leader;
+}
 }

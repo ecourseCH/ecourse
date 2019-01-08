@@ -13,7 +13,7 @@ import { TreeComponent, TreeNode, TreeModel ,TREE_ACTIONS, KEYS, IActionMapping,
   templateUrl: './observation-tag.component.html',
   styleUrls: ['./observation-tag.component.css']
 })
-export class ObservationTagComponent implements OnInit {
+export class ObservationTagComponent implements OnInit, AfterViewInit {
 
   @ViewChild('tree') treeComponent: TreeComponent;
 
@@ -72,13 +72,14 @@ this.log= "nginit"
 */
 
 // TODO why does this not work???
-  ngAfterInit() {
+  ngAfterViewInit() {
     const treeModel:TreeModel = this.treeComponent.treeModel;
-    const firstNode:TreeNode = treeModel.getFirstRoot();
-    firstNode.expandAll();
+  //  const firstNode:TreeNode = treeModel.getFirstRoot();
+   // firstNode.expandAll();
     //firstNode.setActiveAndVisible();
     treeModel.expandAll();
     this.log = "afterviewinit";
+    console.log("afterinit");
   }
 
   getObservationTags(): void {

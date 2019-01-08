@@ -1,8 +1,9 @@
 <h5> 
 Modify your participant here
 </h5>
-
 <div class="form-group">
+<div *ngIf="modifyParticipant.participantId == null">
+
  <label for="modifyParticipant" class="col-form-label">
   Select participant
  </label>
@@ -11,6 +12,7 @@ Modify your participant here
  {{participant.participantScoutname}} - {{participant.participantName}} - {{participant.participantSurname}}
  </option>
  </select>
+</div>
 
 <!--
 <p>
@@ -20,7 +22,7 @@ Scoutname: {{modifyParticipant.participantScoutname}}
 <p>
 Surname: {{modifyParticipant.participantSurname}}
 -->
-
+<div *ngIf="modifyParticipant.participantId" >
 <p>
 <div>
     <input class="form-control" [(ngModel)]="modifyParticipant.participantName" placeholder="Participant name">
@@ -35,6 +37,10 @@ Surname: {{modifyParticipant.participantSurname}}
 </div>
 <p>
   <div>
+  	
+  	<button type="button" class="btn btn-primary btn-space" (click)="abort()">abort!</button>	
 <button type="button" class="btn btn-primary btn-space" (click)="modify()">Update participant!</button>
 <button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete participant!</button>
+</div>
+</div>
 </div>
