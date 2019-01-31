@@ -13,7 +13,11 @@ install tree component
 npm install --save angular-tree-component
 
 
+npm install @angular/material @angular/cdk
+
 install bootstrap
 
 npm install bootstrap font-awesome jquery popper.js
+
+
 

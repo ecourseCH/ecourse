@@ -4,8 +4,13 @@ import { HttpClientModule }    from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { TreeModule } from 'angular-tree-component';
 
-import { Participant } from './model/participant'
-import { Activity } from './model/activity'
+import {    MatDatepickerModule,
+    MatNativeDateModule, } from '@angular/material';
+import {MaterialModule} from '../material-module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { Participant } from './model/participant';
+import { Activity } from './model/activity';
 
 
 import { AppComponent } from './app.component';
@@ -49,14 +54,19 @@ import { ModifyObservationComponent } from './modify-observation/modify-observat
     ModifyLeaderComponent,
     AddLeaderComponent,
     AddObservationComponent,
-    ModifyObservationComponent
+    ModifyObservationComponent,
   ],
   imports: [
     BrowserModule, 
     HttpClientModule, 
     AppRoutingModule, 
     FormsModule,
-    TreeModule.forRoot()
+    TreeModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

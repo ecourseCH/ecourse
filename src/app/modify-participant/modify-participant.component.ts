@@ -40,8 +40,10 @@ getParticipants(): void {
 
 modify(): void {
   this.participantService.updateParticipant(this.modifyParticipant)
-  .subscribe(modifyParticipant => this.modifyParticipant = modifyParticipant);
+  .subscribe();
+
   this.modifyParticipant = new Participant;
+
   this.getParticipants();
 }
 
@@ -50,6 +52,7 @@ this.participantService.deleteParticipant(this.modifyParticipant).subscribe(
       error => this.test = error
       );
 this.modifyParticipant = new Participant;
+
 this.getParticipants();
 }
 onChange(newValue){

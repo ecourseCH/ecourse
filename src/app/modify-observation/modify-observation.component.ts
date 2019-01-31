@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import {NgForm } from '@angular/forms';
 
@@ -48,7 +49,8 @@ export class ModifyObservationComponent implements OnInit {
     , private observationService: ObservationService
     ,private leaderService: LeaderService
     ,private activityService: ActivityService
-    ,private participantService: ParticipantService) { }
+    ,private participantService: ParticipantService,
+    private location: Location) { }
 
   ngOnInit() {
   this.getObservation();
@@ -109,6 +111,8 @@ modify(): void {
   .subscribe(modifyObservation => this.modifyObservation = modifyObservation);
   
   //this.getObservations();
+ // this.location.back();
+ //window.history.back();
 }
 
 delete(): void {
@@ -118,6 +122,7 @@ this.observationService.deleteObservation(this.modifyObservation).subscribe(
 this.modifyObservation = new Observation;
 //this.getObservations();
 // todo -> route further otherwise your stuck.
+//this.location.back();
 }
 /*
 onChange(newValue){

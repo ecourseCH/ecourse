@@ -1,4 +1,4 @@
-<h5> 
+<p></p><h5> 
 Modify your participant here
 </h5>
 <div class="form-group">
@@ -36,11 +36,28 @@ Surname: {{modifyParticipant.participantSurname}}
     <input class="form-control" [(ngModel)]="modifyParticipant.participantSurname" placeholder="Participant Surname">
 </div>
 <p>
+<div>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantBirthday" placeholder="Participant Birthday">
+</div>
+<p>
+<div>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantScoutUnit" placeholder="Participant Scout Unit">
+</div>
+<p>
+<div>
+    <input class="form-control" [(ngModel)]="modifyParticipant.participantUrl" placeholder="Participant Url">
+</div>
+<p>
+<div>
+    <textarea class="form-control" rows="5" [(ngModel)]="modifyParticipant.participantRecommendationRemark" placeholder="Participant Recommendation Remark">
+    </textarea>
+</div>
+<p>
   <div>
   	
-  	<button type="button" class="btn btn-primary btn-space" (click)="abort()">abort!</button>	
-<button type="button" class="btn btn-primary btn-space" (click)="modify()">Update participant!</button>
-<button type="button" class="btn btn-primary btn-space" (click)="delete()">Delete participant!</button>
+  	<button type="button" class="btn btn-secondary btn-space" (click)="abort()">abort!</button>	
+<button type="button" class="btn btn-secondary btn-space" (click)="modify()">Update participant!</button>
+<button type="button" class="btn btn-secondary btn-space" (click)="delete()">Delete participant!</button>
 </div>
 </div>
 </div>

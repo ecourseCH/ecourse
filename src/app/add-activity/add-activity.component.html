@@ -10,7 +10,7 @@ Number: {{addActivity.activityNumber}}
 <p>
 Date: {{addActivity.activityDate}}
 -->
-
+<p></p>
 <h5> 
 Add your new activity here
 </h5>
@@ -22,18 +22,29 @@ Add your new activity here
     <label class="form-control-placeholder" for="Name">Activity name</label>
 </div>
 <p>
-<div class="col-xs-2">
-
-    <input class="form-control" [(ngModel)]="addActivity.activityNumber" placeholder="Activity number">
-
+<div class="col-xs-2 form-group">
+    <input class="form-control" id="activityNumber" [(ngModel)]="addActivity.activityNumber" required>
+    <label class="form-control-placeholder" for="activityNumber">Activity number</label>
 </div>
 <p>
-<div class="col-xs-2">
+<div class="col-xs-2 form-group">
 
-    <input class="form-control" [(ngModel)]="addActivity.activityDate" placeholder="Activity date - YYYY-MM-DD HH24:MI">
-
+    <input class="form-control" id="activityDate" [(ngModel)]="addActivity.activityDate" required>
+ <label class="form-control-placeholder" for="activityDate">Activity date YYYY-MM-DD HH24:MI</label>
 </div>
 
+	<!--<mat-form-field>
+  <input matInput placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [value]="addActivity.activityDate">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+-->
 <p>
 <div>
 <button type="button" class="btn btn-secondary btn-space" (click)="add()">Add activity!

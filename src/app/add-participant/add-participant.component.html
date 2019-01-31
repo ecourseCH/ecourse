@@ -12,6 +12,7 @@ Scoutname: {{addParticipant.participantScoutname}}
 Surname: {{addParticipant.participantSurname}}
 
 -->
+<p></p>
 <h5> 
 Add your new participant here
 </h5>
@@ -27,7 +28,23 @@ Add your new participant here
   <div>
     <input class="form-control" [(ngModel)]="addParticipant.participantSurname" placeholder="Participant surname">
 </div>
+<p></p>
+<div>
+    <input class="form-control" [(ngModel)]="addParticipant.participantBirthday" placeholder="Participant Birthday">
+</div>
 <p>
+<div>
+    <input class="form-control" [(ngModel)]="addParticipant.participantScoutUnit" placeholder="Participant Scout Unit">
+</div>
+<p>
+<div>
+    <input class="form-control" [(ngModel)]="addParticipant.participantUrl" placeholder="Participant Url">
+</div>
+<p>
+<div>
+    <textarea class="form-control" rows="5" [(ngModel)]="addParticipant.participantRecommendationRemark" placeholder="Participant Recommendation Remark">
+    </textarea>
+</div><p>
   <div>
 <button type="button" class="btn btn-secondary btn-space" (click)="add()">Add participant!</button>
 </div>

@@ -40,8 +40,8 @@ getLeaders(): void {
 
 modify(): void {
   this.leaderService.updateLeader(this.modifyLeader)
-  .subscribe(modifyLeader => this.modifyLeader = modifyLeader);
-  
+  .subscribe();
+  this.modifyLeader = new Leader;
   this.getLeaders();
 }
 
