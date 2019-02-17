@@ -19,5 +19,7 @@ install bootstrap
 
 npm install bootstrap font-awesome jquery popper.js
 
+npm install moment hammerjs
+
 
 

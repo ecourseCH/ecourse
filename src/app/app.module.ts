@@ -33,6 +33,14 @@ import { ModifyLeaderComponent } from './modify-leader/modify-leader.component';
 import { AddLeaderComponent } from './add-leader/add-leader.component';
 import { AddObservationComponent } from './add-observation/add-observation.component';
 import { ModifyObservationComponent } from './modify-observation/modify-observation.component';
+import { LoginComponent } from './login/login.component';
+
+
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor} from './interceptors/auth.interceptor';
+
+//import { HttpConfigInterceptor} from './interceptors/httpconfig.interceptor';
+//import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +63,8 @@ import { ModifyObservationComponent } from './modify-observation/modify-observat
     AddLeaderComponent,
     AddObservationComponent,
     ModifyObservationComponent,
+    LoginComponent,
+ //   ErrorDialogComponent,
   ],
   imports: [
     BrowserModule, 
@@ -68,7 +78,9 @@ import { ModifyObservationComponent } from './modify-observation/modify-observat
     BrowserAnimationsModule,
   
   ],
-  providers: [],
+providers: [
+{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
